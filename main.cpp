@@ -8,6 +8,7 @@
 #define CATCH_CONFIG_MAIN
 #include "Circle.h"
 #include "Square.h"
+#include "Rectangle.h"
 #include "catch.hpp"
 
 
@@ -25,6 +26,7 @@ TEST_CASE("file opens", "[opens]"){
       REQUIRE(shape->file_open("s.ps") == false);
       delete shape;
    }
+   
 }
 
 

@@ -21,11 +21,12 @@ void Square::toPostScript(double sideLength){
     post_stream << "%!" << endl;
     post_stream << "%% Square Example" << endl;
     post_stream << "/inch {72 mul} def" << endl;
+    post_stream << "/buffer {72 add} def" << endl;
     post_stream << "newpath" << endl;
     post_stream << "1 inch 1 inch moveto" << endl;
-    post_stream << 2*sideLength << " " << sideLength << " lineto" << endl;
-    post_stream << 2*sideLength << " " << 2*sideLength << " lineto" << endl;
-    post_stream << sideLength << " " << 2*sideLength << " lineto" << endl;
+    post_stream << "1 inch " << sideLength << "buffer lineto" << endl;
+    post_stream << sideLength << " buffer " << sideLength << " buffer lineto" << endl;
+    post_stream << sideLength << " buffer 1 inch lineto" << endl;
     post_stream << "closepath" << endl;
     post_stream << "fill" << endl;
     post_stream << "stroke" << endl;
