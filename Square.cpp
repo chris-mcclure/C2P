@@ -10,8 +10,9 @@
 using std::ofstream;
 using std::endl;
 
-Square::Square(double sideLength){
-    _sideLength = sideLength;
+Square::Square(double sideLength):
+    _sideLength(sideLength)
+{
     toPostScript(_sideLength);
 }
 
@@ -32,3 +33,5 @@ void Square::toPostScript(double sideLength){
     post_stream << "showpage" << endl;
     post_stream.close();
 }
+
+void Square::toPostScript(double var1, double var2){}

@@ -13,8 +13,9 @@ using std::endl;
 using std::string;
 using std::ifstream;
 using std::istringstream;
-Circle::Circle(double radius){
-    _radius = radius;
+Circle::Circle(double radius):
+    _radius(radius)
+{
     toPostScript(_radius);
 }
 
@@ -32,4 +33,5 @@ void Circle::toPostScript(double radius){
     post_stream.close();
 }
 
+void Circle::toPostScript(double var1, double var2){}
 

@@ -18,6 +18,7 @@ class Square : public BasicShape{
 public:
     Square(double sideLenth);
     void toPostScript(double sideLenth);
+    void toPostScript(double var1, double var2);
     
 private:
     double _sideLength;

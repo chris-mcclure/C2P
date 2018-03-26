@@ -10,10 +10,14 @@
 #define Rectangle_h
 
 #include "BasicShape.h"
-#include <stdio.h>
+#include <fstream>
+#include <iostream>
 
 class Rectangle : public BasicShape{
 public:
+    Rectangle(double width, double height);
+    void toPostScript(double width, double height);
+    void toPostScript(double var1);
 private:
     double _width;
     double _height;

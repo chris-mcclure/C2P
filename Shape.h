@@ -14,7 +14,9 @@
 class Shape{
 public:
     bool file_open(const std::string & s);
+    std::string checkPostScript(const std::string & s);
     virtual void toPostScript(double var1) = 0;
+    virtual void toPostScript(double var1, double var2) = 0;
     
 private:
     int bounding_box;

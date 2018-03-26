@@ -15,3 +15,13 @@ bool Shape::file_open(const string & s){
         return true;
     return false;
 }
+
+
+string Shape::checkPostScript(const string & s){
+    string s1;
+    ifstream file(s);
+    for(int i = 0; i < 2; ++i){
+        s1 += file.get();
+    }
+    return s1;
+}
