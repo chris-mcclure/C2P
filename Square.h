@@ -17,8 +17,10 @@
 class Square : public BasicShape{
 public:
     Square(double sideLenth);
-    void toPostScript(double sideLenth);
-    void toPostScript(double var1, double var2);
+    std::ofstream & toPostScript(double sideLength, std::ofstream & stream);
+    std::ofstream & toPostScript(double var1, double var2, std::ofstream & stream);
+    double getBoundingBox_X();
+    double getBoundingBox_Y();
     
 private:
     double _sideLength;

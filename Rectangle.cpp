@@ -12,25 +12,39 @@ using std::endl;
 
 Rectangle::Rectangle(double width, double height):
     _width(width), _height(height)
-{
-    toPostScript(_width, _height);
+{}
+
+double Rectangle::getBoundingBox_X(){
+    return _width;
 }
 
-void Rectangle::toPostScript(double width, double height){
-    ofstream post_stream;
-    post_stream.open("rectangle.ps");
-    post_stream << "%!" << endl;
-    post_stream << "%% Rectangle example" << endl;
-    post_stream << "/width {" << width << " mul} def" << endl;
-    post_stream << "/height {" << height << " mul} def" << endl;
-    post_stream << "newpath" << endl;
-    post_stream << "72 72 moveto" << endl;
-    post_stream << "1 width 0 height rlineto" << endl;
-    post_stream << "0 width 1 height rlineto" << endl;
-    post_stream << "-1 width 0 height rlineto" << endl;
-    post_stream << "closepath" << endl;
-    post_stream << "stroke" << endl;
-    post_stream << "showpage" << endl;
+double Rectangle::getBoundingBox_Y(){
+    return _height;
 }
 
-void Rectangle::toPostScript(double var1){}
+ofstream & Rectangle::toPostScript(double width, double height, ofstream & stream){
+    stream << "%!" << endl;
+    stream << "%% Rectangle example" << endl;
+    stream << "/width {" << width << " mul} def" << endl;
+    stream << "/height {" << height << " mul} def" << endl;
+    stream << "newpath" << endl;
+    stream << "216 216 moveto" << endl;
+    stream << "1 width 0 height rlineto" << endl;
+    stream << "0 width 1 height rlineto" << endl;
+    stream << "-1 width 0 height rlineto" << endl;
+    stream << "closepath" << endl;
+    stream << "gsave" << endl;
+    stream << "0.9 0.1 0.9 setrgbcolor" << endl;
+    stream << "fill" << endl;
+    stream << "grestore" << endl;
+    stream << "stroke" << endl;
+    stream << "showpage" << endl;
+    stream << endl;
+    return stream;
+}
+
+ofstream & Rectangle::toPostScript(double var1, ofstream & stream){
+    return stream;
+}
+
+

@@ -15,10 +15,12 @@
 
 class Triangle : public BasicShape{
 public:
-    Triangle(double sideLenth);
-    void toPostScript(double sideLength);
-    void toPostScript(double var1, double var2);
-
+    Triangle(double sideLength);
+    std::ofstream & toPostScript(double sideLength, std::ofstream & stream);
+    std::ofstream & toPostScript(double var1, double var2, std::ofstream & stream);
+    double getBoundingBox_X();
+    double getBoundingBox_Y();
+    
 private:
     double _sideLength;
 };

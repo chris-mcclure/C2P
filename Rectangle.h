@@ -16,8 +16,11 @@
 class Rectangle : public BasicShape{
 public:
     Rectangle(double width, double height);
-    void toPostScript(double width, double height);
-    void toPostScript(double var1);
+    std::ofstream & toPostScript(double width, double height, std::ofstream & stream);
+    std::ofstream & toPostScript(double var1, std::ofstream & stream);
+    double getBoundingBox_X();
+    double getBoundingBox_Y();
+    
 private:
     double _width;
     double _height;

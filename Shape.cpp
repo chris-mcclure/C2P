@@ -8,6 +8,9 @@
 #include "Shape.h"
 using std::ifstream;
 using std::string;
+using std::ofstream;
+using std::cout;
+using std::endl;
 
 bool Shape::file_open(const string & s){
     ifstream file(s);
@@ -25,3 +28,4 @@ string Shape::checkPostScript(const string & s){
     }
     return s1;
 }
+
