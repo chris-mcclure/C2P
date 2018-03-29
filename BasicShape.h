@@ -10,9 +10,9 @@
 #define BasicShape_h
 
 #include <stdio.h>
-#include "Shape.h"
+#include "CompoundShape.h"
 
-class BasicShape : public Shape{
+class BasicShape : public CompoundShape{
 public:
    virtual ~BasicShape() = default;
 };

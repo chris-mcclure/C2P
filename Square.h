@@ -16,13 +16,15 @@
 
 class Square : public BasicShape{
 public:
-    Square(double sideLenth);
-    std::ofstream & toPostScript(double sideLength, std::ofstream & stream);
-    std::ofstream & toPostScript(double var1, double var2, std::ofstream & stream);
-    double getBoundingBox_X();
-    double getBoundingBox_Y();
-    
+   Square(double sideLength, std::ofstream & stream);
+   std::ofstream & toPostScript(double sideLength, std::ofstream & stream);
+   std::ofstream & toPostScript(double var1, double var2, std::ofstream & stream);
+   double getBoundingBox_X();
+   double getBoundingBox_Y();
+   std::ofstream & drawBoundingBox(double radius, std::ofstream & stream);
+   std::ofstream & drawBoundingBox(double boxWidth, double boxHeight, std::ofstream & stream);
+   
 private:
-    double _sideLength;
+   double _sideLength;
 };
 #endif /* Square_h */
