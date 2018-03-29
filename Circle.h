@@ -16,11 +16,15 @@
 
 class Circle : public BasicShape{
 public:
-    Circle(double radius);
-    void toPostScript(double radius);
-    
+   Circle(double radius, std::ofstream & stream);
+   std::ofstream & toPostScript(double radius, std::ofstream & stream);
+   std::ofstream & toPostScript(double var1, double var2, std::ofstream & stream);
+   double getBoundingBox_X();
+   double getBoundingBox_Y();
+   std::ofstream & drawBoundingBox(double radius, std::ofstream & stream);
+   std::ofstream & drawBoundingBox(double boxWidth, double boxHeight, std::ofstream & stream);
 private:
-    double _radius;
+   double _radius;
 };
 
 #endif /* Circle_h */

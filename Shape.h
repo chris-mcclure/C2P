@@ -9,16 +9,25 @@
 #ifndef Shape_h
 #define Shape_h
 #include <string>
-#include "fstream"
+#include <fstream>
+#include <iostream>
 
 class Shape{
 public:
-    bool file_open(const std::string & s);
-    virtual void toPostScript(double var1) = 0;
-    
+   bool file_open(const std::string & s);
+   std::string checkPostScript(const std::string & s);
+   virtual std::ofstream & toPostScript(double var1, std::ofstream & stream) = 0;
+   virtual std::ofstream & toPostScript(double var1, double var2, std::ofstream & stream) = 0;
+   virtual double getBoundingBox_X() = 0;
+   virtual double getBoundingBox_Y() = 0;
+//   virtual std::ofstream & drawBoundingBox(double sideLength, std::ofstream & stream) = 0;
+ //  virtual std::ofstream & drawBoundingBox(double boxWidth,
+ //                                          double boxHeight, std::ofstream & stream) = 0;
+   
+   
 private:
-    int bounding_box;
-    int current_point;
-    
+   double bounding_box;
+   double current_point;
+   
 };
 #endif /* Shape_h */

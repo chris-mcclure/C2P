@@ -10,44 +10,48 @@
 using std::ofstream;
 using std::endl;
 
-Rectangle::Rectangle(double width, double height){
-    _width = width;
-    _height = height;
-    toPostScript(width, height);
+Rectangle::Rectangle(double width, double height, ofstream & stream):
+_width(width), _height(height)
+{
+   toPostScript(_width, _height, stream);
 }
 
-void Rectangle::toPostScript(double width, double height){
-    ofstream post_stream;
-    post_stream.open("rectangle.ps");
-    post_stream << "%!" << endl;
-    post_stream << "%% Rectangle Example" << endl;
-    post_stream << "/inch {72 mul} def" << endl;
-    post_stream << "/buffer {72 add} def" << endl;
-    post_stream << "newpath" << endl;
-    post_stream << "1 inch 1 inch moveto" << endl;
-    post_stream << "1 inch " << height << " buffer lineto" << endl;
-    post_stream << width << " buffer " << height << " buffer lineto" << endl;
-    post_stream << width << " buffer 1 inch lineto" << endl;
-    post_stream << "closepath" << endl;
-    post_stream << "0 0.5 1 setrgbcolor fill" << endl;
-    post_stream << "stroke" << endl;
-    post_stream << "showpage" << endl;
-    post_stream.close();
+double Rectangle::getBoundingBox_X(){
+   return _width;
 }
 
+double Rectangle::getBoundingBox_Y(){
+   return _height;
+}
 
+ofstream & Rectangle::toPostScript(double width, double height, ofstream & stream){
+   stream << "%!" << endl;
+   stream << "%% Rectangle example" << endl;
+   stream << "/width {" << width << " mul} def" << endl;
+   stream << "/height {" << height << " mul} def" << endl;
+   stream << "newpath" << endl;
+   stream << "216 216 moveto" << endl;
+   stream << "1 width 0 height rlineto" << endl;
+   stream << "0 width 1 height rlineto" << endl;
+   stream << "-1 width 0 height rlineto" << endl;
+   stream << "closepath" << endl;
+   stream << "gsave" << endl;
+   stream << "0.9 0.1 0.9 setrgbcolor" << endl;
+   stream << "fill" << endl;
+   stream << "grestore" << endl;
+   stream << "stroke" << endl;
+   stream << endl;
+   return stream;
+}
 
+ofstream & Rectangle::toPostScript(double var1, ofstream & stream){
+   return stream;
+}
 
+ofstream & Rectangle::drawBoundingBox(double radius, ofstream & stream){
+   return stream;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
+ofstream & Rectangle::drawBoundingBox(double boxWidth, double boxHeight, ofstream & stream){
+   return stream;
+}
