@@ -12,8 +12,10 @@
 #include "Rectangle.h"
 #include "Polygon.h"
 #include "Spacer.h"
+#include "Rectangle.h"
 #include "catch.hpp"
 #include <memory>
+
 using std::ofstream;
 using std::vector;
 using std::unique_ptr;
@@ -34,6 +36,7 @@ TEST_CASE("Basic Shape creation", "[Basic Shapes]"){
       post_stream.close();
       REQUIRE(post_stream.is_open() == false);
    }
+   
 }
 
  

@@ -9,10 +9,10 @@
 #ifndef Rectangle_h
 #define Rectangle_h
 
-#include "BasicShape.h"
-#include <fstream>
-#include <iostream>
 
+#include <iostream>
+#include <fstream>
+#include "BasicShape.h"
 class Rectangle : public BasicShape{
 public:
    Rectangle(double width, double height, std::ofstream & stream);
@@ -22,7 +22,7 @@ public:
    double getBoundingBox_Y();
    std::ofstream & drawBoundingBox(double radius, std::ofstream & stream);
    std::ofstream & drawBoundingBox(double boxWidth, double boxHeight, std::ofstream & stream);
-   
+
 private:
    double _width;
    double _height;

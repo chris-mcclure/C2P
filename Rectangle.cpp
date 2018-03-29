@@ -37,7 +37,6 @@ ofstream & Rectangle::toPostScript(double width, double height, ofstream & strea
    stream << "closepath" << endl;
    stream << "gsave" << endl;
    stream << "0.9 0.1 0.9 setrgbcolor" << endl;
-
    stream << "fill" << endl;
    stream << "grestore" << endl;
    stream << "stroke" << endl;
