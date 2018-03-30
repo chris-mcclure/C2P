@@ -10,44 +10,29 @@
 using std::ofstream;
 using std::endl;
 
-Spacer::Spacer(double width, double height, ofstream & stream):
+Spacer::Spacer(double width, double height):
 _width(width), _height(height)
-{
-   toPostScript(_width, _height, stream);
-}
+{}
 
-double Spacer::getBoundingBox_X(){
+double Spacer::getWidth() const{
    return _width;
 }
 
-double Spacer::getBoundingBox_Y(){
+double Spacer::getHeight() const{
    return _height;
 }
 
-ofstream & Spacer::toPostScript(double width, double height, ofstream & stream){
-   stream << "%!" << endl;
-   stream << "%% Spacer example" << endl;
-   stream << "/width {" << width << " mul} def" << endl;
-   stream << "/height {" << height << " mul} def" << endl;
-   stream << "newpath" << endl;
-   stream << "216 360 moveto" << endl;
+ofstream & Spacer::toPostScript(ofstream & stream){
+   stream << "/width {" << getWidth() << " mul} def" << endl;
+   stream << "/height {" << getHeight() << " mul} def" << endl;
+   stream << "1 inch 0 inch moveto" << endl;
    stream << "1 width 0 height rlineto" << endl;
    stream << "0 width 1 height rlineto" << endl;
    stream << "-1 width 0 height rlineto" << endl;
    stream << "closepath" << endl;
-   stream << "showpage" << endl;
-   stream << endl;
+   stream << "stroke" << endl;
+   //stream << "showpage" << endl;
+   stream << endl; 
    return stream;
 }
 
-ofstream & Spacer::toPostScript(double var1, ofstream & stream){
-   return stream;
-}
-
-ofstream & Spacer::drawBoundingBox(double radius, ofstream & stream){
-   return stream;
-}
-
-ofstream & Spacer::drawBoundingBox(double boxWidth, double boxHeight, ofstream & stream){
-   return stream;
-}

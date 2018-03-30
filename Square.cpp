@@ -10,10 +10,12 @@
 using std::ofstream;
 using std::endl;
 
-Square::Square(double sideLength, ofstream & stream):
+Square::Square(double sideLength):
 _sideLength(sideLength)
-{
-   toPostScript(_sideLength, stream);
+{}
+
+double Square::getSideLength() const{
+   return _sideLength;
 }
 
 double Square::getBoundingBox_X(){
@@ -24,12 +26,8 @@ double Square::getBoundingBox_Y(){
    return _sideLength;
 }
 
-ofstream & Square::toPostScript(double sideLength, ofstream & stream){
-   stream << "%!" << endl;
-   stream << "%% Square Example" << endl;
-   stream << "/inch {72 mul} def" << endl;
-   stream << "/sideLength {" << sideLength << " mul} def" << endl;
-   stream << "newpath" << endl;
+ofstream & Square::toPostScript(ofstream & stream){
+   stream << "/sideLength {" << getSideLength() << " mul} def" << endl;
    stream << "4 inch 1 inch moveto" << endl;
    stream << "1 sideLength 0 sideLength rlineto" << endl;
    stream << "0 sideLength 1 sideLength rlineto" << endl;
@@ -41,11 +39,7 @@ ofstream & Square::toPostScript(double sideLength, ofstream & stream){
    stream << "grestore" << endl;
    stream << "stroke" << endl;
    stream << endl;
-   drawBoundingBox(sideLength, stream);
-   return stream;
-}
-
-ofstream & Square::toPostScript(double var1, double var2, ofstream & stream){
+   //drawBoundingBox(sideLength, stream);
    return stream;
 }
 
@@ -58,7 +52,7 @@ ofstream & Square::drawBoundingBox(double sideLength, ofstream & stream){
    stream << "0 sideLength 1 sideLength rlineto" << endl;
    stream << "-1 sideLength 0 sideLength rlineto" << endl;
    stream << "closepath" << endl;
-  stream << "stroke" << endl;*/
+   stream << "stroke" << endl;*/
    return stream;
    
 }

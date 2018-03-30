@@ -14,18 +14,21 @@ Polygon::Polygon(double numSides, double sideLength)
 :_numSides(numSides), _sideLength(sideLength)
 {}
 
-ofstream & Polygon::toPostScript(double numSides, double sideLength, ofstream & stream){
+double Polygon::getNumSides() const{
+   return _numSides;
+}
+
+double Polygon::getSideLength() const{
+   return _sideLength;
+}
+
+ofstream & Polygon::toPostScript(ofstream & stream){
    stream.open("polygon.ps");
-   stream << "%!" << endl;
-   stream << "%% Polygon Example" << endl;
-   stream << "/numSides {" << numSides << "} def" << endl;
-   stream << "/sideLength {" << sideLength << "} def" << endl;
+   stream << "/numSides {" << getNumSides() << "} def" << endl;
+   stream << "/sideLength {" << getSideLength() << "} def" << endl;
    stream << "newpath" << endl;
    stream << "72 72 moveto" << endl;
    stream << "" << endl;
    return stream;
 }
 
-ofstream & Polygon::toPostScript(double var1, ofstream & stream){
-   return stream;
-}

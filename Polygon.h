@@ -15,8 +15,9 @@
 class Polygon : public BasicShape{
 public:
    Polygon(double numSides, double sideLength);
-   std::ofstream & toPostScript(double numSides, double sideLength, std::ofstream & stream);
-   std::ofstream & toPostScript(double var1, std::ofstream & stream);
+   std::ofstream & toPostScript(std::ofstream & stream);
+   double getNumSides() const;
+   double getSideLength() const;
 private:
    double _numSides;
    double _sideLength;

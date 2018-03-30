@@ -10,26 +10,19 @@
 using std::ofstream;
 using std::endl;
 
-Triangle::Triangle(double sideLength, ofstream & stream)
+Triangle::Triangle(double sideLength)
 :_sideLength(sideLength)
-{
-   toPostScript(_sideLength, stream);
-}
+{}
 
-double Triangle::getBoundingBox_X(){
+double Triangle::getSideLength() const{
    return _sideLength;
 }
 
-double Triangle::getBoundingBox_Y(){
-   return _sideLength;
-}
 
-std::ofstream & Triangle::toPostScript(double sideLength, ofstream & stream){
-   stream << "%!" << endl;
-   stream << "%% Triangle Example" << endl;
-   stream << "/sideLength {" << sideLength << " mul} def" << endl;
+std::ofstream & Triangle::toPostScript(ofstream & stream){
+   stream << "/sideLength {" << getSideLength() << " mul} def" << endl;
    stream << "newpath" << endl;
-   stream << "1 sideLength 1 sideLength moveto" << endl;
+   stream << "2 inch 2 inch moveto" << endl;
    stream << "1 sideLength 1 sideLength rlineto" << endl;
    stream << "1 sideLength -1 sideLength rlineto" << endl;
    stream << "closepath" << endl;
@@ -39,10 +32,6 @@ std::ofstream & Triangle::toPostScript(double sideLength, ofstream & stream){
    stream << "grestore" << endl;
    stream << "stroke" << endl;
    stream << endl;
-   return stream;
-}
-
-ofstream & Triangle::toPostScript(double var1, double var2, ofstream & stream){
    return stream;
 }
 
