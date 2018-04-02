@@ -10,17 +10,52 @@
 using std::ostream;
 using std::endl;
 using std::ostringstream;
+#include <cmath>
+#include <math.h>
 
-Polygon::Polygon(double numSides, double sideLength) //change sideLength to size
+Polygon::Polygon(int numSides, double sideLength) //change sideLength to size
 :_numSides(numSides), _sideLength(sideLength)
 {}
 
 
 double Polygon::getWidth(){
+    switch (_numSides % 2) {
+        case 0:
+            if(_numSides % 4 == 0) {
+                _width = (_sideLength * cos(M_PI/_numSides))/(sin(M_PI/_numSides));
+            }
+            else {
+                _width = _sideLength / (sin(M_PI/_numSides));
+            }
+            break;
+        case 1:
+            _width = (_sideLength * sin(M_PI*(_numSides - 1)/(2 * _numSides))) / (sin(M_PI/_numSides));
+            break;
+        default:
+            break;
+    }
+    
     return _width;
 }
 
 double Polygon::getHeight(){
+    switch (_numSides % 2) {
+        case 0:
+            if(_numSides % 4 == 0) {
+                _height = _sideLength * (cos(M_PI/_numSides)) / (sin(M_PI/_numSides));
+            }
+            else {
+                _height = _sideLength * (cos(M_PI/_numSides)) / (sin(M_PI/_numSides));
+            }
+            break;
+        case 1:
+            _height = _sideLength * (1 + cos(M_PI/_numSides)) / (2 * sin(M_PI/_numSides));
+            break;
+        default:
+            break;
+    }
+    
+    
     return _height;
 }
 
@@ -40,7 +75,7 @@ ostringstream & Polygon::toPostScript(ostringstream & stream){
     stream << "/m matrix currentmatrix def" << endl;
     stream << " dup scale" << endl;
     stream << "/s matrix currentmatrix def" << endl;
-    stream << "0 360 n div 359.9"
+    stream << "0 360 n div 359.9" << endl;
     stream << "({" << endl;
     stream << "{" << endl;
     stream << "//s setmatrix" << endl;
@@ -63,7 +98,7 @@ ostringstream & Polygon::toPostScript(ostringstream & stream){
     stream << "closepath stroke" << endl;
     stream << "grestore" << endl;
     stream << "} def" << endl;
-    stream << "100" << getNumSides(); << getHeight(); << getWidth(); << "drawpoly"<< endl;
+    stream << "100" << getNumSides() << getHeight() << getWidth() << "drawpoly"<< endl;
     //this is the how its set up I just gave it a set size of 100 but used
     // your functions to complete the rest.  
     //100 6 300 200 drawpoly %size, #sides, lenght?, width?

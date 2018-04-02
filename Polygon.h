@@ -12,14 +12,14 @@
 
 class Polygon : public BasicShape{
 public:
-    Polygon(double numSides, double sideLength);
+    Polygon(int numSides, double sideLength);
     std::ostringstream & toPostScript(std::ostringstream & stream);
     double getNumSides() const;
     double getSideLength() const;
     double getHeight();
     double getWidth();
 private:
-    double _numSides;
+    int _numSides;
     double _width;
     double _height;
     double _sideLength;
