@@ -25,14 +25,24 @@ double Circle::getHeight(){
     return _height;
 }
 
+double Circle::getRadius(){
+    return _radius;
+}
+
 
 ostream & Circle::toPostScript(ostream & stream){
-    stream << "/radius {" << getWidth()/2 << " mul} def" << endl;
-    stream << "1 inch 1 inch 1 radius 0 360 arc" << endl;
+    stream << "%%Circle" << endl;
+    stream << "/radius {" << getRadius() << " mul} def" << endl;
+    stream << "/width {" << getWidth() << " mul} def" << endl;
+    stream << "/height {" << getHeight() << " mul} def" << endl;
+    stream << "gsave" << endl;
+    stream << "1 radius 1 inch 1 radius add 1 radius 0 360 arc" << endl;
     stream << "gsave" << endl;
     stream << "0 1 0.5 setrgbcolor fill" << endl;
     stream << "grestore" << endl;
     stream << "stroke" << endl;
+    stream << "grestore" << endl;
+    stream << "1 width 0 height rmoveto" << endl;
     stream << endl;
     // drawBoundingBox(radius, stream);
     return stream;

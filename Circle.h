@@ -19,6 +19,7 @@ public:
     double getBoundingBox_Y();
     double getWidth();
     double getHeight();
+    double getRadius();
 private:
     double _radius;
     double _width;

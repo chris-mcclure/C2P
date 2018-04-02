@@ -24,6 +24,8 @@ ostream & intro(ostream & stream){
     stream << "%!" << endl;
     stream << "%% C2P" << endl;
     stream << "/inch {72 mul} def" << endl;
+    stream << "0 inch 0 inch moveto" << endl;
+    stream << "0 inch 1 inch rmoveto" << endl;
     stream << endl;
     return stream;
 }
@@ -32,7 +34,7 @@ ostream & intro(ostream & stream){
 
 TEST_CASE("Basic Shape creation", "[Basic Shapes]"){
     SECTION("Basic Shapes"){
-        ofstream post_stream("C2K.ps");
+        ofstream post_stream("C2P.ps");
         REQUIRE(post_stream.is_open() == true);
         
         intro(post_stream);
@@ -40,9 +42,15 @@ TEST_CASE("Basic Shape creation", "[Basic Shapes]"){
         
         shape = std::move(std::make_unique<Circle>(25));
         shape->toPostScript(post_stream);
+        shape = std::move(std::make_unique<Spacer>(72, 72));
+        shape->toPostScript(post_stream);
         shape = std::move(std::make_unique<Square>(34));
         shape->toPostScript(post_stream);
+        shape = std::move(std::make_unique<Spacer>(72, 72));
+        shape->toPostScript(post_stream);
         shape = std::move(std::make_unique<Triangle>(72));
+        shape->toPostScript(post_stream);
+        shape = std::move(std::make_unique<Spacer>(72, 72));
         shape->toPostScript(post_stream);
         shape = std::move(std::make_unique<Rectangle>(144, 72));
         shape->toPostScript(post_stream);

@@ -24,15 +24,15 @@ double Spacer::getHeight(){
 
 
 ostream & Spacer::toPostScript(ostream & stream){
-    stream << "/width {" << getWidth() << " mul} def" << endl;
-    stream << "/height {" << getHeight() << " mul} def" << endl;
-    stream << "1 inch 0 inch moveto" << endl;
-    stream << "1 width 0 height rlineto" << endl;
-    stream << "0 width 1 height rlineto" << endl;
-    stream << "-1 width 0 height rlineto" << endl;
+    stream << "%%Spacer" << endl;
+    stream << "gsave" << endl;
+    stream << "1 inch 0 inch rlineto" << endl;
+    stream << "0 inch 1 inch rlineto" << endl;
+    stream << "-1 inch 0 inch rlineto" << endl;
     stream << "closepath" << endl;
     stream << "stroke" << endl;
-    //stream << "showpage" << endl;
+    stream << "grestore" << endl;
+    stream << "1 inch 0 inch rmoveto" << endl;
     stream << endl;
     return stream;
 }

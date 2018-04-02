@@ -24,17 +24,20 @@ double Triangle::getHeight(){
 
 
 std::ostream & Triangle::toPostScript(ostream & stream){
-    stream << "/sideLength {" << getWidth() << " mul} def" << endl;
-    stream << "newpath" << endl;
-    stream << "2 inch 2 inch moveto" << endl;
-    stream << "1 sideLength 1 sideLength rlineto" << endl;
-    stream << "1 sideLength -1 sideLength rlineto" << endl;
+    stream << "%%Triangle" << endl;
+    stream << "/width {" << getWidth() << " mul} def" << endl;
+    stream << "/height {" << getHeight() << " mul} def" << endl;
+    stream << "gsave" << endl;
+    stream << "1 width 2 div 1 height rlineto" << endl;
+    stream << "1 width 2 div -1 height rlineto" << endl;
     stream << "closepath" << endl;
     stream << "gsave" << endl;
     stream << "0 0.5 1 setrgbcolor" << endl;
     stream << "fill" << endl;
     stream << "grestore" << endl;
     stream << "stroke" << endl;
+    stream << "grestore" << endl;
+    stream << "1 width 0 height rmoveto" << endl;
     stream << endl;
     return stream;
 }

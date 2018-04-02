@@ -23,19 +23,22 @@ double Square::getHeight(){
 
 
 ostream & Square::toPostScript(ostream & stream){
-    stream << "/sideLength {" << getWidth() << " mul} def" << endl;
-    stream << "4 inch 1 inch moveto" << endl;
-    stream << "1 sideLength 0 sideLength rlineto" << endl;
-    stream << "0 sideLength 1 sideLength rlineto" << endl;
-    stream << "-1 sideLength 0 sideLength rlineto" << endl;
+    stream << "%%Square" << endl;
+    stream << "/width {" << getWidth() << " mul} def" << endl;
+    stream << "/height {" << getHeight() << " mul} def" << endl;
+    stream << "gsave" << endl;
+    stream << "1 width 0 height rlineto" << endl;
+    stream << "0 width 1 height rlineto" << endl;
+    stream << "-1 width 0 height rlineto" << endl;
     stream << "closepath" << endl;
     stream << "gsave" << endl;
     stream << "1 0 0.5 setrgbcolor" << endl;
     stream << "fill" << endl;
     stream << "grestore" << endl;
     stream << "stroke" << endl;
+    stream << "grestore" << endl;
+    stream << "1 width 0 height rmoveto" << endl;
     stream << endl;
-    //drawBoundingBox(sideLength, stream);
     return stream;
 }
 
