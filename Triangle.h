@@ -10,21 +10,21 @@
 #define Triangle_h
 
 #include "BasicShape.h"
-#include <fstream>
-#include <iostream>
 
 class Triangle : public BasicShape{
 public:
-   Triangle(double sideLength, std::ofstream & stream);
-   std::ofstream & toPostScript(double sideLength, std::ofstream & stream);
-   std::ofstream & toPostScript(double var1, double var2, std::ofstream & stream);
-   double getBoundingBox_X();
-   double getBoundingBox_Y();
-   std::ofstream & drawBoundingBox(double sideLength, std::ofstream & stream);
-   std::ofstream & drawBoundingBox(double boxWidth, double boxHeight, std::ofstream & stream);
-   
+    Triangle(double width);
+    std::ostream & toPostScript(std::ostream & stream);
+    double getBoundingBox_X();
+    double getBoundingBox_Y();
+    std::ostream & drawBoundingBox(double sideLength, std::ostream & stream);
+    std::ostream & drawBoundingBox(double boxWidth, double boxHeight, std::ostream & stream);
+    double getWidth();
+    double getHeight();
 private:
-   double _sideLength;
+    double _width;
+    double _height;
+    
 };
 
 

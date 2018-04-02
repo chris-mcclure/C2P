@@ -7,25 +7,25 @@
 //
 
 #include "CompoundShape.h"
-using std::ofstream;
+using std::ostream;
 using std::vector;
 using std::unique_ptr;
 using std::endl;
 using std::make_unique;
 void rotate(CompoundShape & shape, int degree){
-   
+    
 }
 
 void scale(CompoundShape & shape, double fx, double fy){
-   
+    
 }
 
-void stackHorizontal(vector<unique_ptr<Shape>> & cShape, ofstream & stream){
-   for(auto &i : cShape){
-   }
+void stackHorizontal(vector<unique_ptr<Shape>> & cShape, ostream & stream){
+    for(auto &i : cShape){
+    }
 }
 
-void stackVertical(vector<unique_ptr<Shape>> & cShape, ofstream & stream){
-   for(auto &i : cShape){
-   }
+void stackVertical(vector<unique_ptr<Shape>> & cShape, ostream & stream){
+    for(auto &i : cShape){
+    }
 }

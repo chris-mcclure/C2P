@@ -14,6 +14,6 @@
 
 class BasicShape : public CompoundShape{
 public:
-   virtual ~BasicShape() = default;
+    virtual ~BasicShape() = default;
 };
 #endif /* BasicShape_h */

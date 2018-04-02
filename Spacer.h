@@ -10,21 +10,18 @@
 #define Spacer_h
 
 #include "BasicShape.h"
-#include <fstream>
 
 class Spacer : public BasicShape{
 public:
-   Spacer(double width, double height, std::ofstream & stream);
-   std::ofstream & toPostScript(double width, double height, std::ofstream & stream);
-   std::ofstream & toPostScript(double var1, std::ofstream & stream);
-   double getBoundingBox_X();
-   double getBoundingBox_Y();
-   std::ofstream & drawBoundingBox(double radius, std::ofstream & stream);
-   std::ofstream & drawBoundingBox(double boxWidth, double boxHeight, std::ofstream & stream);
-   
+    Spacer(double width, double height);
+    std::ostream & toPostScript(std::ostream & stream);
+    void setWidth(double width);
+    void setHeight(double height);
+    double getWidth();
+    double getHeight();
 private:
-   double _width;
-   double _height;
+    double _width;
+    double _height;
 };
 
 #endif /* Spacer_h */

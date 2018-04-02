@@ -9,22 +9,20 @@
 #ifndef Circle_h
 #define Circle_h
 #include "BasicShape.h"
-#include <iostream>
-#include <fstream>
-#include <string>
 
 
 class Circle : public BasicShape{
 public:
-   Circle(double radius, std::ofstream & stream);
-   std::ofstream & toPostScript(double radius, std::ofstream & stream);
-   std::ofstream & toPostScript(double var1, double var2, std::ofstream & stream);
-   double getBoundingBox_X();
-   double getBoundingBox_Y();
-   std::ofstream & drawBoundingBox(double radius, std::ofstream & stream);
-   std::ofstream & drawBoundingBox(double boxWidth, double boxHeight, std::ofstream & stream);
+    Circle(double radius);
+    std::ostream & toPostScript(std::ostream & stream);
+    double getBoundingBox_X();
+    double getBoundingBox_Y();
+    double getWidth();
+    double getHeight();
 private:
-   double _radius;
+    double _radius;
+    double _width;
+    double _height;
 };
 
 #endif /* Circle_h */

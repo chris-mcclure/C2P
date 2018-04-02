@@ -7,25 +7,37 @@
 //
 
 #include "Polygon.h"
-using std::ofstream;
+using std::ostream;
 using std::endl;
 
 Polygon::Polygon(double numSides, double sideLength)
 :_numSides(numSides), _sideLength(sideLength)
 {}
 
-ofstream & Polygon::toPostScript(double numSides, double sideLength, ofstream & stream){
-   stream.open("polygon.ps");
-   stream << "%!" << endl;
-   stream << "%% Polygon Example" << endl;
-   stream << "/numSides {" << numSides << "} def" << endl;
-   stream << "/sideLength {" << sideLength << "} def" << endl;
-   stream << "newpath" << endl;
-   stream << "72 72 moveto" << endl;
-   stream << "" << endl;
-   return stream;
+
+double Polygon::getWidth(){
+    return _width;
 }
 
-ofstream & Polygon::toPostScript(double var1, ofstream & stream){
-   return stream;
+double Polygon::getHeight(){
+    return _height;
 }
+
+
+double Polygon::getNumSides() const{
+    return _numSides;
+}
+
+double Polygon::getSideLength() const{
+    return _sideLength;
+}
+
+ostream & Polygon::toPostScript(ostream & stream){
+    stream << "/numSides {" << getNumSides() << "} def" << endl;
+    stream << "/sideLength {" << getSideLength() << "} def" << endl;
+    stream << "newpath" << endl;
+    stream << "72 72 moveto" << endl;
+    stream << "" << endl;
+    return stream;
+}
+

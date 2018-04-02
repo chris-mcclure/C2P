@@ -9,17 +9,20 @@
 #ifndef Polygon_h
 #define Polygon_h
 #include "BasicShape.h"
-#include <fstream>
-#include <iostream>
 
 class Polygon : public BasicShape{
 public:
-   Polygon(double numSides, double sideLength);
-   std::ofstream & toPostScript(double numSides, double sideLength, std::ofstream & stream);
-   std::ofstream & toPostScript(double var1, std::ofstream & stream);
+    Polygon(double numSides, double sideLength);
+    std::ostream & toPostScript(std::ostream & stream);
+    double getNumSides() const;
+    double getSideLength() const;
+    double getHeight();
+    double getWidth();
 private:
-   double _numSides;
-   double _sideLength;
+    double _numSides;
+    double _width;
+    double _height;
+    double _sideLength;
 };
 
 #endif /* Polygon_h */

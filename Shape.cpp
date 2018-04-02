@@ -8,24 +8,22 @@
 #include "Shape.h"
 using std::ifstream;
 using std::string;
-using std::ofstream;
+using std::ostream;
 using std::cout;
 using std::endl;
 
 bool Shape::file_open(const string & s){
-   ifstream file(s);
-   if(file.is_open())
-      return true;
-   return false;
+    ifstream file(s);
+    if(file.is_open())
+        return true;
+    return false;
 }
 
-
 string Shape::checkPostScript(const string & s){
-   string s1;
-   ifstream file(s);
-   for(int i = 0; i < 2; ++i){
-      s1 += file.get();
-   }
-   return s1;
+    string s1;
+    ifstream file(s);
+    for(int i = 0; i < 2; ++i)
+        s1 += file.get();
+    return s1;
 }
 

@@ -9,23 +9,23 @@
 #ifndef Rectangle_h
 #define Rectangle_h
 
-
-#include <iostream>
-#include <fstream>
 #include "BasicShape.h"
+
 class Rectangle : public BasicShape{
 public:
-   Rectangle(double width, double height, std::ofstream & stream);
-   std::ofstream & toPostScript(double width, double height, std::ofstream & stream);
-   std::ofstream & toPostScript(double var1, std::ofstream & stream);
-   double getBoundingBox_X();
-   double getBoundingBox_Y();
-   std::ofstream & drawBoundingBox(double radius, std::ofstream & stream);
-   std::ofstream & drawBoundingBox(double boxWidth, double boxHeight, std::ofstream & stream);
-
+    Rectangle(double width, double height);
+    std::ostream & toPostScript(std::ostream & stream);
+    double getBoundingBox_X();
+    double getBoundingBox_Y();
+    std::ostream & drawBoundingBox(double radius, std::ostream & stream);
+    std::ostream & drawBoundingBox(double width, double height, std::ostream & stream);
+    void setWidth(double width);
+    void setHeight(double height);
+    double getWidth();
+    double getHeight();
 private:
-   double _width;
-   double _height;
+    double _width;
+    double _height;
 };
 
 
