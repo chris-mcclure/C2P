@@ -12,6 +12,7 @@ using std::vector;
 using std::unique_ptr;
 using std::endl;
 using std::make_unique;
+using std::ostringstream;
 void rotate(CompoundShape & shape, int degree){
     
 }
@@ -20,12 +21,12 @@ void scale(CompoundShape & shape, double fx, double fy){
     
 }
 
-void stackHorizontal(vector<unique_ptr<Shape>> & cShape, ostream & stream){
+void stackHorizontal(vector<unique_ptr<Shape>> & cShape, ostringstream & stream){
     for(auto &i : cShape){
     }
 }
 
-void stackVertical(vector<unique_ptr<Shape>> & cShape, ostream & stream){
+void stackVertical(vector<unique_ptr<Shape>> & cShape, ostringstream & stream){
     for(auto &i : cShape){
     }
 }

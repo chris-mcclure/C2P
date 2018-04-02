@@ -16,11 +16,15 @@
 #include <memory>
 using std::ostream;
 using std::ofstream;
+using std::ostringstream;
 using std::vector;
 using std::unique_ptr;
 using std::endl;
+using std::istringstream;
+using std::ifstream;
+using std::string;
 
-ostream & intro(ostream & stream){
+ostringstream & intro(ostringstream & stream){
     stream << "%!" << endl;
     stream << "%% C2P" << endl;
     stream << "/inch {72 mul} def" << endl;
@@ -30,38 +34,82 @@ ostream & intro(ostream & stream){
     return stream;
 }
 
+string readFile(string fileName){
+    string s1;
+    ifstream file(fileName);
+    while(!file.eof())
+        s1 += file.get();
+    return s1;
+}
+
 /* Checks to see if the file actually gets created and opened. */
 
 TEST_CASE("Basic Shape creation", "[Basic Shapes]"){
     SECTION("Basic Shapes"){
         ofstream post_stream("C2P.ps");
+        ostringstream stream;
         REQUIRE(post_stream.is_open() == true);
         
-        intro(post_stream);
+        intro(stream);
         std::unique_ptr<BasicShape> shape;
-        
+      
+        //Circle
         shape = std::move(std::make_unique<Circle>(25));
-        shape->toPostScript(post_stream);
+        shape->toPostScript(stream);
+        REQUIRE(shape->getWidth() == 25);
+        REQUIRE(shape->getHeight() == 25);
+      
+        //Spacer
         shape = std::move(std::make_unique<Spacer>(72, 72));
-        shape->toPostScript(post_stream);
+        shape->toPostScript(stream);
+        REQUIRE(shape->getWidth() == 72);
+        REQUIRE(shape->getHeight() == 72);
+        
+        //Square
         shape = std::move(std::make_unique<Square>(34));
-        shape->toPostScript(post_stream);
+        shape->toPostScript(stream);
+        REQUIRE(shape->getWidth() == 34);
+        REQUIRE(shape->getHeight() == 34);
+        
+        //Spacer
         shape = std::move(std::make_unique<Spacer>(72, 72));
-        shape->toPostScript(post_stream);
+        shape->toPostScript(stream);
+        REQUIRE(shape->getWidth() == 72);
+        REQUIRE(shape->getHeight() == 72);
+        
+        //Triangle
         shape = std::move(std::make_unique<Triangle>(72));
-        shape->toPostScript(post_stream);
+        shape->toPostScript(stream);
+        REQUIRE(shape->getWidth() == 72);
+        REQUIRE(shape->getHeight() == 72);
+        
+        //Spacer
         shape = std::move(std::make_unique<Spacer>(72, 72));
-        shape->toPostScript(post_stream);
+        shape->toPostScript(stream);
+        REQUIRE(shape->getWidth() == 72);
+        REQUIRE(shape->getHeight() == 72);
+        
+        //Rectangle
         shape = std::move(std::make_unique<Rectangle>(144, 72));
-        shape->toPostScript(post_stream);
+        shape->toPostScript(stream);
+        REQUIRE(shape->getWidth() == 144);
+        REQUIRE(shape->getHeight() == 72);
+        
+        //Spacer
         shape = std::move(std::make_unique<Spacer>(72, 72));
-        shape->toPostScript(post_stream);
+        shape->toPostScript(stream);
+        REQUIRE(shape->getWidth() == 72);
+        REQUIRE(shape->getHeight() == 72);
+        
+        stream << "\377";
+        post_stream << stream.str();
         post_stream.close();
         
+        string contents;
+        contents = readFile("template.ps");
+        REQUIRE(contents == stream.str());
         REQUIRE(shape->checkPostScript("C2P.ps") == "%!");
         REQUIRE(post_stream.is_open() == false);
-    }
-    SECTION("get size"){
     }
 }
 
@@ -70,7 +118,8 @@ TEST_CASE("Basic Shape creation", "[Basic Shapes]"){
 
 TEST_CASE("compund shape creation", "[compund]"){
     ofstream post_stream("c3.ps");
-    intro(post_stream);
+    ostringstream stream;
+    intro(stream);
     
     vector<unique_ptr<Shape>> _cShape;
     unique_ptr<Shape> circle = std::make_unique<Circle>(25);
@@ -86,7 +135,8 @@ TEST_CASE("compund shape creation", "[compund]"){
     _cShape.push_back(std::move(spacer));
     
     for(auto &i : _cShape){
-        i->toPostScript(post_stream);
+        i->toPostScript(stream);
     }
+    post_stream << stream.str();
     post_stream.close();
 }

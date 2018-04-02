@@ -13,8 +13,8 @@
 
 class Circle : public BasicShape{
 public:
-    Circle(double radius);
-    std::ostream & toPostScript(std::ostream & stream);
+    Circle(double width);
+    std::ostringstream & toPostScript(std::ostringstream & stream);
     double getBoundingBox_X();
     double getBoundingBox_Y();
     double getWidth();

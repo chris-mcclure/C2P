@@ -13,7 +13,7 @@
 class Polygon : public BasicShape{
 public:
     Polygon(double numSides, double sideLength);
-    std::ostream & toPostScript(std::ostream & stream);
+    std::ostringstream & toPostScript(std::ostringstream & stream);
     double getNumSides() const;
     double getSideLength() const;
     double getHeight();

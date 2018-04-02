@@ -9,6 +9,7 @@
 #include "Polygon.h"
 using std::ostream;
 using std::endl;
+using std::ostringstream;
 
 Polygon::Polygon(double numSides, double sideLength)
 :_numSides(numSides), _sideLength(sideLength)
@@ -32,7 +33,7 @@ double Polygon::getSideLength() const{
     return _sideLength;
 }
 
-ostream & Polygon::toPostScript(ostream & stream){
+ostringstream & Polygon::toPostScript(ostringstream & stream){
     stream << "/numSides {" << getNumSides() << "} def" << endl;
     stream << "/sideLength {" << getSideLength() << "} def" << endl;
     stream << "newpath" << endl;

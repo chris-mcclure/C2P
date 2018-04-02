@@ -10,11 +10,10 @@
 using std::ostream;
 using std::endl;
 using std::string;
-using std::ifstream;
-using std::istringstream;
+using std::ostringstream;
 
-Circle::Circle(double radius):_radius(radius),
-_width(radius*2), _height(radius*2)
+Circle::Circle(double width):_radius(width/2),
+_width(width), _height(width)
 {}
 
 double Circle::getWidth(){
@@ -30,7 +29,7 @@ double Circle::getRadius(){
 }
 
 
-ostream & Circle::toPostScript(ostream & stream){
+ostringstream & Circle::toPostScript(ostringstream & stream){
     stream << "%%Circle" << endl;
     stream << "/radius {" << getRadius() << " mul} def" << endl;
     stream << "/width {" << getWidth() << " mul} def" << endl;
