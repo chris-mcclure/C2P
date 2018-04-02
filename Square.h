@@ -14,11 +14,11 @@
 class Square : public BasicShape{
 public:
     Square(double width);
-    std::ostream & toPostScript(std::ostream & stream);
+    std::ostringstream & toPostScript(std::ostringstream & stream);
     double getBoundingBox_X();
     double getBoundingBox_Y();
-    std::ostream & drawBoundingBox(double radius, std::ostream & stream);
-    std::ostream & drawBoundingBox(double boxWidth, double boxHeight, std::ostream & stream);
+    std::ostringstream & drawBoundingBox(double radius, std::ostringstream & stream);
+    std::ostringstream & drawBoundingBox(double boxWidth, double boxHeight, std::ostringstream & stream);
     double getWidth();
     double getHeight();
 private:

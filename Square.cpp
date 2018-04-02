@@ -9,7 +9,7 @@
 #include "Square.h"
 using std::ostream;
 using std::endl;
-
+using std::ostringstream;
 Square::Square(double width):_width(width), _height(width)
 {}
 
@@ -22,7 +22,7 @@ double Square::getHeight(){
 }
 
 
-ostream & Square::toPostScript(ostream & stream){
+ostringstream & Square::toPostScript(ostringstream & stream){
     stream << "%%Square" << endl;
     stream << "/width {" << getWidth() << " mul} def" << endl;
     stream << "/height {" << getHeight() << " mul} def" << endl;
@@ -42,7 +42,7 @@ ostream & Square::toPostScript(ostream & stream){
     return stream;
 }
 
-ostream & Square::drawBoundingBox(double sideLength, ostream & stream){
+ostringstream & Square::drawBoundingBox(double sideLength, ostringstream & stream){
     /*  stream << "newpath" << endl;
      stream << "/inch {72 mul} def" << endl;
      stream << "/sideLength {" << sideLength << "} def" << endl;
@@ -56,6 +56,6 @@ ostream & Square::drawBoundingBox(double sideLength, ostream & stream){
     
 }
 
-ostream & Square::drawBoundingBox(double boxWidth, double boxHeight, ostream & stream){
+ostringstream & Square::drawBoundingBox(double boxWidth, double boxHeight, ostringstream & stream){
     return stream;
 }

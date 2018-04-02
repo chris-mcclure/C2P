@@ -9,6 +9,7 @@
 #include "Spacer.h"
 using std::ostream;
 using std::endl;
+using std::ostringstream;
 
 Spacer::Spacer(double width, double height)
 :_width(width), _height(height)
@@ -23,7 +24,7 @@ double Spacer::getHeight(){
 }
 
 
-ostream & Spacer::toPostScript(ostream & stream){
+ostringstream & Spacer::toPostScript(ostringstream & stream){
     stream << "%%Spacer" << endl;
     stream << "gsave" << endl;
     stream << "1 inch 0 inch rlineto" << endl;

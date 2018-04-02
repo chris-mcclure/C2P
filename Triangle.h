@@ -14,11 +14,11 @@
 class Triangle : public BasicShape{
 public:
     Triangle(double width);
-    std::ostream & toPostScript(std::ostream & stream);
+    std::ostringstream & toPostScript(std::ostringstream & stream);
     double getBoundingBox_X();
     double getBoundingBox_Y();
-    std::ostream & drawBoundingBox(double sideLength, std::ostream & stream);
-    std::ostream & drawBoundingBox(double boxWidth, double boxHeight, std::ostream & stream);
+    std::ostringstream & drawBoundingBox(double sideLength, std::ostringstream & stream);
+    std::ostringstream & drawBoundingBox(double boxWidth, double boxHeight, std::ostringstream & stream);
     double getWidth();
     double getHeight();
 private:

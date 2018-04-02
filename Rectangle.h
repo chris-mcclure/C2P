@@ -14,11 +14,11 @@
 class Rectangle : public BasicShape{
 public:
     Rectangle(double width, double height);
-    std::ostream & toPostScript(std::ostream & stream);
+    std::ostringstream & toPostScript(std::ostringstream & stream);
     double getBoundingBox_X();
     double getBoundingBox_Y();
-    std::ostream & drawBoundingBox(double radius, std::ostream & stream);
-    std::ostream & drawBoundingBox(double width, double height, std::ostream & stream);
+    std::ostringstream & drawBoundingBox(double radius, std::ostringstream & stream);
+    std::ostringstream & drawBoundingBox(double width, double height, std::ostringstream & stream);
     void setWidth(double width);
     void setHeight(double height);
     double getWidth();

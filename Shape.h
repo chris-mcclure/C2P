@@ -17,7 +17,7 @@ class Shape{
 public:
     bool file_open(const std::string & s);
     std::string checkPostScript(const std::string & s);
-    virtual std::ostream & toPostScript(std::ostream & stream) = 0;
+    virtual std::ostringstream & toPostScript(std::ostringstream & stream) = 0;
     virtual double getWidth() = 0;
     virtual double getHeight() = 0;
 private:

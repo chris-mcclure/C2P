@@ -9,6 +9,7 @@
 #include "Triangle.h"
 using std::ostream;
 using std::endl;
+using std::ostringstream;
 
 Triangle::Triangle(double width)
 :_width(width), _height(width)
@@ -23,7 +24,7 @@ double Triangle::getHeight(){
 }
 
 
-std::ostream & Triangle::toPostScript(ostream & stream){
+ostringstream & Triangle::toPostScript(ostringstream & stream){
     stream << "%%Triangle" << endl;
     stream << "/width {" << getWidth() << " mul} def" << endl;
     stream << "/height {" << getHeight() << " mul} def" << endl;
@@ -42,13 +43,13 @@ std::ostream & Triangle::toPostScript(ostream & stream){
     return stream;
 }
 
-ostream & Triangle::drawBoundingBox(double sideLength, ostream & stream){
+ostringstream & Triangle::drawBoundingBox(double sideLength, ostringstream & stream){
     stream << "/sideLength {" << sideLength << "} def" << endl;
     stream << "newpath" << endl;
     stream << "sideLength sideLength moveto" << endl;
     return stream;
 }
 
-ostream & Triangle::drawBoundingBox(double boxWidth, double boxHeight, ostream & stream){
+ostringstream & Triangle::drawBoundingBox(double boxWidth, double boxHeight, ostringstream & stream){
     return stream;
 }

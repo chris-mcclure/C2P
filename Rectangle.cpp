@@ -9,6 +9,7 @@
 #include "Rectangle.h"
 using std::ostream;
 using std::endl;
+using std::ostringstream;
 
 Rectangle::Rectangle(double width, double height)
 :_width(width), _height(height)
@@ -23,7 +24,7 @@ double Rectangle::getHeight(){
 }
 
 
-ostream & Rectangle::toPostScript(ostream & stream){
+ostringstream & Rectangle::toPostScript(ostringstream & stream){
     stream << "%%Rectangle" << endl;
     stream << "/width {" << getWidth() << " mul} def" << endl;
     stream << "/height {" << getHeight() << " mul} def" << endl;
@@ -43,10 +44,10 @@ ostream & Rectangle::toPostScript(ostream & stream){
     return stream;
 }
 
-ostream & Rectangle::drawBoundingBox(double radius, ostream & stream){
+ostringstream & Rectangle::drawBoundingBox(double radius, ostringstream & stream){
     return stream;
 }
 
-ostream & Rectangle::drawBoundingBox(double boxWidth, double boxHeight, ostream & stream){
+ostringstream & Rectangle::drawBoundingBox(double boxWidth, double boxHeight, ostringstream & stream){
     return stream;
 }

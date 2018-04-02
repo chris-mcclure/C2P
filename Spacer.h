@@ -14,7 +14,7 @@
 class Spacer : public BasicShape{
 public:
     Spacer(double width, double height);
-    std::ostream & toPostScript(std::ostream & stream);
+    std::ostringstream & toPostScript(std::ostringstream & stream);
     void setWidth(double width);
     void setHeight(double height);
     double getWidth();
