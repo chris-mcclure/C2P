@@ -26,6 +26,7 @@ double Rectangle::getHeight(){
 
 ostringstream & Rectangle::toPostScript(ostringstream & stream){
     stream << "%%Rectangle" << endl;
+    stream << "/rectangle{" << endl;
     stream << "/width {" << getWidth() << " mul} def" << endl;
     stream << "/height {" << getHeight() << " mul} def" << endl;
     stream << "gsave" << endl;
@@ -40,6 +41,8 @@ ostringstream & Rectangle::toPostScript(ostringstream & stream){
     stream << "stroke" << endl;
     stream << "grestore" << endl;
     stream << "1 width 0 height rmoveto" << endl;
+    stream << "}def" << endl;
+    stream << "rectangle" <<endl;
     stream << endl;
     return stream;
 }

@@ -14,11 +14,11 @@ using std::endl;
 using std::make_unique;
 using std::ostringstream;
 void rotate(CompoundShape & shape, int degree){
-    
+  
 }
 
 void scale(CompoundShape & shape, double fx, double fy){
-    
+
 }
 
 void stackHorizontal(vector<unique_ptr<Shape>> & cShape, ostringstream & stream){

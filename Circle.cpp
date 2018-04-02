@@ -31,6 +31,7 @@ double Circle::getRadius(){
 
 ostringstream & Circle::toPostScript(ostringstream & stream){
     stream << "%%Circle" << endl;
+    stream << "/circle{" << endl;
     stream << "/radius {" << getRadius() << " mul} def" << endl;
     stream << "/width {" << getWidth() << " mul} def" << endl;
     stream << "/height {" << getHeight() << " mul} def" << endl;
@@ -42,8 +43,9 @@ ostringstream & Circle::toPostScript(ostringstream & stream){
     stream << "stroke" << endl;
     stream << "grestore" << endl;
     stream << "1 width 0 height rmoveto" << endl;
+    stream << "}def" << endl;
+    stream << "circle" <<endl;
     stream << endl;
     // drawBoundingBox(radius, stream);
     return stream;
 }
-

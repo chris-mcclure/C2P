@@ -26,6 +26,7 @@ double Spacer::getHeight(){
 
 ostringstream & Spacer::toPostScript(ostringstream & stream){
     stream << "%%Spacer" << endl;
+    stream << "/spacer {"
     stream << "gsave" << endl;
     stream << "1 inch 0 inch rlineto" << endl;
     stream << "0 inch 1 inch rlineto" << endl;
@@ -34,6 +35,8 @@ ostringstream & Spacer::toPostScript(ostringstream & stream){
     stream << "stroke" << endl;
     stream << "grestore" << endl;
     stream << "1 inch 0 inch rmoveto" << endl;
+    stream << "}def" << endl;
+    stream << "spacer" <<endl; 
     stream << endl;
     return stream;
 }
