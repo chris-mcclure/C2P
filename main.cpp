@@ -20,6 +20,9 @@ using std::ostringstream;
 using std::vector;
 using std::unique_ptr;
 using std::endl;
+using std::istringstream;
+using std::ifstream;
+using std::string;
 
 ostringstream & intro(ostringstream & stream){
     stream << "%!" << endl;
@@ -29,6 +32,14 @@ ostringstream & intro(ostringstream & stream){
     stream << "0 inch 1 inch rmoveto" << endl;
     stream << endl;
     return stream;
+}
+
+string readFile(string fileName){
+    string s1;
+    ifstream file(fileName);
+    while(!file.eof())
+        s1 += file.get();
+    return s1;
 }
 
 /* Checks to see if the file actually gets created and opened. */
@@ -42,58 +53,63 @@ TEST_CASE("Basic Shape creation", "[Basic Shapes]"){
         intro(stream);
         std::unique_ptr<BasicShape> shape;
       
+        //Circle
         shape = std::move(std::make_unique<Circle>(25));
         shape->toPostScript(stream);
         REQUIRE(shape->getWidth() == 25);
         REQUIRE(shape->getHeight() == 25);
       
+        //Spacer
         shape = std::move(std::make_unique<Spacer>(72, 72));
         shape->toPostScript(stream);
         REQUIRE(shape->getWidth() == 72);
         REQUIRE(shape->getHeight() == 72);
         
+        //Square
         shape = std::move(std::make_unique<Square>(34));
         shape->toPostScript(stream);
         REQUIRE(shape->getWidth() == 34);
         REQUIRE(shape->getHeight() == 34);
         
+        //Spacer
         shape = std::move(std::make_unique<Spacer>(72, 72));
         shape->toPostScript(stream);
         REQUIRE(shape->getWidth() == 72);
         REQUIRE(shape->getHeight() == 72);
         
+        //Triangle
         shape = std::move(std::make_unique<Triangle>(72));
         shape->toPostScript(stream);
         REQUIRE(shape->getWidth() == 72);
         REQUIRE(shape->getHeight() == 72);
         
+        //Spacer
         shape = std::move(std::make_unique<Spacer>(72, 72));
         shape->toPostScript(stream);
         REQUIRE(shape->getWidth() == 72);
         REQUIRE(shape->getHeight() == 72);
         
+        //Rectangle
         shape = std::move(std::make_unique<Rectangle>(144, 72));
         shape->toPostScript(stream);
         REQUIRE(shape->getWidth() == 144);
         REQUIRE(shape->getHeight() == 72);
         
+        //Spacer
         shape = std::move(std::make_unique<Spacer>(72, 72));
         shape->toPostScript(stream);
         REQUIRE(shape->getWidth() == 72);
         REQUIRE(shape->getHeight() == 72);
-       
+        
+        stream << "\377";
         post_stream << stream.str();
         post_stream.close();
         
-        
-
-        std::cout << stream.str();
-        
-        
+        string contents;
+        contents = readFile("template.ps");
+        REQUIRE(contents == stream.str());
         REQUIRE(shape->checkPostScript("C2P.ps") == "%!");
         REQUIRE(post_stream.is_open() == false);
-    }
-    SECTION("get size"){
     }
 }
 
