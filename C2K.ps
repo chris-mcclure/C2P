@@ -1,42 +1,87 @@
 %!
 %% C2P
 /inch {72 mul} def
+0 inch 0 inch moveto
+0 inch 1 inch rmoveto
 
+%%Circle
 /radius {25 mul} def
-1 inch 1 inch 1 radius 0 360 arc
+/width {50 mul} def
+/height {50 mul} def
+gsave
+1 radius 1 inch 1 radius add 1 radius 0 360 arc
 gsave
 0 1 0.5 setrgbcolor fill
 grestore
 stroke
+grestore
+1 width 0 height rmoveto
 
-/sideLength {34 mul} def
-4 inch 1 inch moveto
-1 sideLength 0 sideLength rlineto
-0 sideLength 1 sideLength rlineto
--1 sideLength 0 sideLength rlineto
+%%Spacer
+gsave
+1 inch 0 inch rlineto
+0 inch 1 inch rlineto
+-1 inch 0 inch rlineto
+closepath
+stroke
+grestore
+1 inch 0 inch rmoveto
+
+%%Square
+/width {34 mul} def
+/height {34 mul} def
+gsave
+1 width 0 height rlineto
+0 width 1 height rlineto
+-1 width 0 height rlineto
 closepath
 gsave
 1 0 0.5 setrgbcolor
 fill
 grestore
 stroke
+grestore
+1 width 0 height rmoveto
 
-/sideLength {72 mul} def
-newpath
-2 inch 2 inch moveto
-1 sideLength 1 sideLength rlineto
-1 sideLength -1 sideLength rlineto
+%%Spacer
+gsave
+1 inch 0 inch rlineto
+0 inch 1 inch rlineto
+-1 inch 0 inch rlineto
+closepath
+stroke
+grestore
+1 inch 0 inch rmoveto
+
+%%Triangle
+/width {72 mul} def
+/height {72 mul} def
+gsave
+1 width 2 div 1 height rlineto
+1 width 2 div -1 height rlineto
 closepath
 gsave
 0 0.5 1 setrgbcolor
 fill
 grestore
 stroke
+grestore
+1 width 0 height rmoveto
 
+%%Spacer
+gsave
+1 inch 0 inch rlineto
+0 inch 1 inch rlineto
+-1 inch 0 inch rlineto
+closepath
+stroke
+grestore
+1 inch 0 inch rmoveto
+
+%%Rectangle
 /width {144 mul} def
 /height {72 mul} def
-newpath
-1 inch 4 inch moveto
+gsave
 1 width 0 height rlineto
 0 width 1 height rlineto
 -1 width 0 height rlineto
@@ -46,13 +91,16 @@ gsave
 fill
 grestore
 stroke
+grestore
+1 width 0 height rmoveto
 
-/width {72 mul} def
-/height {72 mul} def
-1 inch 0 inch moveto
-1 width 0 height rlineto
-0 width 1 height rlineto
--1 width 0 height rlineto
+%%Spacer
+gsave
+1 inch 0 inch rlineto
+0 inch 1 inch rlineto
+-1 inch 0 inch rlineto
 closepath
 stroke
+grestore
+1 inch 0 inch rmoveto
 
