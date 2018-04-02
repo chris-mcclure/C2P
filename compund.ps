@@ -1,0 +1,58 @@
+%!
+%% Circle Example
+/radius {25 mul} def
+72 216 1 radius 0 360 arc
+gsave
+0 1 0.5 setrgbcolor fill
+grestore
+stroke
+
+newpath
+72 216 moveto
+50 0 rlineto
+0 50 rlineto
+-50 0 rlineto
+closepath
+stroke
+%!
+%% Square Example
+/inch {72 mul} def
+/sideLength {34 mul} def
+newpath
+4 inch 1 inch moveto
+1 sideLength 0 sideLength rlineto
+0 sideLength 1 sideLength rlineto
+-1 sideLength 0 sideLength rlineto
+closepath
+gsave
+1 0 0.5 setrgbcolor
+fill
+grestore
+stroke
+
+%!
+%% Triangle Example
+/sideLength {72 mul} def
+newpath
+1 sideLength 1 sideLength moveto
+1 sideLength 1 sideLength rlineto
+1 sideLength -1 sideLength rlineto
+closepath
+gsave
+0 0.5 1 setrgbcolor
+fill
+grestore
+stroke
+
+%!
+%% Spacer example
+/width {144 mul} def
+/height {72 mul} def
+newpath
+216 360 moveto
+1 width 0 height rlineto
+0 width 1 height rlineto
+-1 width 0 height rlineto
+closepath
+showpage
+

@@ -41,12 +41,12 @@ TEST_CASE("Basic Shape creation", "[Basic Shapes]"){
         
         intro(stream);
         std::unique_ptr<BasicShape> shape;
-        
+      
         shape = std::move(std::make_unique<Circle>(25));
         shape->toPostScript(stream);
         REQUIRE(shape->getWidth() == 25);
         REQUIRE(shape->getHeight() == 25);
-        
+      
         shape = std::move(std::make_unique<Spacer>(72, 72));
         shape->toPostScript(stream);
         REQUIRE(shape->getWidth() == 72);
@@ -81,12 +81,16 @@ TEST_CASE("Basic Shape creation", "[Basic Shapes]"){
         shape->toPostScript(stream);
         REQUIRE(shape->getWidth() == 72);
         REQUIRE(shape->getHeight() == 72);
-        
+       
+        post_stream << stream.str();
         post_stream.close();
         
-        post_stream << stream.str();
         
-        //REQUIRE(shape->checkPostScript("C2P.ps") == "%!");
+
+        std::cout << stream.str();
+        
+        
+        REQUIRE(shape->checkPostScript("C2P.ps") == "%!");
         REQUIRE(post_stream.is_open() == false);
     }
     SECTION("get size"){

@@ -1,39 +1,39 @@
 %!
 %% C2P
 /inch {72 mul} def
+
+
 0 inch 0 inch moveto
 0 inch 1 inch rmoveto
 
-%%Circle
-/radius {12.5 mul} def
-/width {25 mul} def
-/height {25 mul} def
+%CIRCLE
+/radius {25 mul} def
 gsave
-1 radius 1 inch 1 radius add 1 radius 0 360 arc
+1 radius 1 radius 1 inch add 1 radius 0 360 arc
 gsave
 0 1 0.5 setrgbcolor fill
 grestore
 stroke
 grestore
-1 width 0 height rmoveto
+2 radius 0 inch rmoveto
 
-%%Spacer
+
+%SPACER
 gsave
 1 inch 0 inch rlineto
 0 inch 1 inch rlineto
--1 inch 0 inch rlineto
+-1 inch 0 inch rlineto 
 closepath
 stroke
 grestore
-1 inch 0 inch rmoveto
 
-%%Square
-/width {34 mul} def
-/height {34 mul} def
+%SQUARE
+1 inch 0 inch rmoveto
+/sideLength {34 mul} def
 gsave
-1 width 0 height rlineto
-0 width 1 height rlineto
--1 width 0 height rlineto
+1 sideLength 0 sideLength rlineto
+0 sideLength 1 sideLength rlineto
+-1 sideLength 0 sideLength rlineto
 closepath
 gsave
 1 0 0.5 setrgbcolor
@@ -41,24 +41,23 @@ fill
 grestore
 stroke
 grestore
-1 width 0 height rmoveto
+1 sideLength 0 sideLength rmoveto
 
-%%Spacer
+%SPACER
 gsave
 1 inch 0 inch rlineto
 0 inch 1 inch rlineto
--1 inch 0 inch rlineto
+-1 inch 0 inch rlineto 
 closepath
 stroke
 grestore
 1 inch 0 inch rmoveto
 
-%%Triangle
-/width {72 mul} def
-/height {72 mul} def
+%TRIANGLE
+/sideLength {72 mul} def
 gsave
-1 width 2 div 1 height rlineto
-1 width 2 div -1 height rlineto
+1 sideLength 2 div 1 sideLength rlineto
+1 sideLength 2 div -1 sideLength rlineto
 closepath
 gsave
 0 0.5 1 setrgbcolor
@@ -66,19 +65,19 @@ fill
 grestore
 stroke
 grestore
-1 width 0 height rmoveto
+1 sideLength 0 sideLength rmoveto
 
-%%Spacer
+%SPACER
 gsave
 1 inch 0 inch rlineto
 0 inch 1 inch rlineto
--1 inch 0 inch rlineto
+-1 inch 0 inch rlineto 
 closepath
 stroke
 grestore
 1 inch 0 inch rmoveto
 
-%%Rectangle
+%RECTANGLE
 /width {144 mul} def
 /height {72 mul} def
 gsave
@@ -92,15 +91,17 @@ fill
 grestore
 stroke
 grestore
-1 width 0 height rmoveto
+1 width 0 width rmoveto
 
-%%Spacer
+%SPACER
 gsave
 1 inch 0 inch rlineto
 0 inch 1 inch rlineto
--1 inch 0 inch rlineto
+-1 inch 0 inch rlineto 
 closepath
 stroke
 grestore
 1 inch 0 inch rmoveto
+
+showpage
 

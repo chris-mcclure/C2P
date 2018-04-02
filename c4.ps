@@ -1,0 +1,58 @@
+%!
+%% C2P
+/inch {72 mul} def
+
+/radius {25 mul} def
+1 inch 1 inch 1 radius 0 360 arc
+gsave
+0 1 0.5 setrgbcolor fill
+grestore
+stroke
+
+/sideLength {34 mul} def
+4 inch 1 inch moveto
+1 sideLength 0 sideLength rlineto
+0 sideLength 1 sideLength rlineto
+-1 sideLength 0 sideLength rlineto
+closepath
+gsave
+1 0 0.5 setrgbcolor
+fill
+grestore
+stroke
+
+/sideLength {72 mul} def
+newpath
+2 inch 2 inch moveto
+1 sideLength 1 sideLength rlineto
+1 sideLength -1 sideLength rlineto
+closepath
+gsave
+0 0.5 1 setrgbcolor
+fill
+grestore
+stroke
+
+/width {72 mul} def
+/height {144 mul} def
+newpath
+1 inch 4 inch moveto
+1 width 0 height rlineto
+0 width 1 height rlineto
+-1 width 0 height rlineto
+closepath
+gsave
+0.9 0.1 0.9 setrgbcolor
+fill
+grestore
+stroke
+
+/width {72 mul} def
+/height {72 mul} def
+1 inch 0 inch moveto
+1 width 0 height rlineto
+0 width 1 height rlineto
+-1 width 0 height rlineto
+closepath
+stroke
+

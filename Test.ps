@@ -1,0 +1,72 @@
+%!
+%% Testing
+/inch {72 mul} def
+
+0 inch 0 inch moveto
+1 inch 1 inch rmoveto
+
+%square
+gsave
+1 inch 0 inch rlineto
+0 inch 1 inch rlineto
+-1 inch 0 inch rlineto
+closepath
+stroke
+grestore
+
+%spacer
+1 inch 0 inch rmoveto
+gsave
+1 inch 0 inch rlineto
+0 inch 1 inch rlineto
+-1 inch 0 inch rlineto 
+closepath
+grestore
+
+%triangle
+1 inch 0 inch rmoveto
+gsave
+/sideLength {72 mul} def
+1 sideLength 2 div 1 sideLength rlineto
+1 sideLength 2 div -1 sideLength rlineto
+closepath
+gsave 
+0 0.5 1 setrgbcolor
+fill 
+grestore 
+stroke
+grestore
+
+%spacer
+1 inch 0 inch rmoveto
+gsave
+1 inch 0 inch rlineto
+0 inch 1 inch rlineto
+-1 inch 0 inch rlineto 
+closepath
+grestore
+
+%rectangle
+1 inch 0 inch rmoveto
+gsave
+/width {144 mul} def
+/height {72 mul} def
+1 width 0 height rlineto
+0 width 1 height rlineto
+-1 width 0 height rlineto
+closepath
+stroke
+grestore
+
+%spacer
+1 inch 0 inch rmoveto
+gsave
+1 inch 0 inch rlineto
+0 inch 1 inch rlineto
+-1 inch 0 inch rlineto 
+closepath
+grestore
+
+
+
+showpage
