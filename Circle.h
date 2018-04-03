@@ -13,17 +13,22 @@
 
 class Circle : public BasicShape{
 public:
-    Circle(double width);
+    Circle(double width, const std::string & name);
     std::ostringstream & toPostScript(std::ostringstream & stream);
     double getBoundingBox_X();
     double getBoundingBox_Y();
     double getWidth();
     double getHeight();
     double getRadius();
+    void setPostScript(std::ostringstream & stream);
+    std::ostringstream & getPostScript();
+    std::string getName();
 private:
     double _radius;
     double _width;
     double _height;
+    std::ostringstream _stream;
+    std::string _name;
 };
 
 #endif /* Circle_h */

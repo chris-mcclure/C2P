@@ -13,7 +13,7 @@
 
 class Rectangle : public BasicShape{
 public:
-    Rectangle(double width, double height);
+    Rectangle(double width, double height, const std::string & name);
     std::ostringstream & toPostScript(std::ostringstream & stream);
     double getBoundingBox_X();
     double getBoundingBox_Y();
@@ -23,9 +23,15 @@ public:
     void setHeight(double height);
     double getWidth();
     double getHeight();
+    void setPostScript(std::ostringstream & stream);
+    std::ostringstream & getPostScript();
+    std::string getName();
+
 private:
     double _width;
     double _height;
+    std::string _name;
+    std::ostringstream _stream;
 };
 
 

@@ -10,7 +10,10 @@
 using std::ostream;
 using std::endl;
 using std::ostringstream;
-Square::Square(double width):_width(width), _height(width)
+using std::string;
+
+Square::Square(double width, const string & name)
+:_width(width), _height(width), _name(name)
 {}
 
 double Square::getWidth(){
@@ -21,9 +24,22 @@ double Square::getHeight(){
     return _height;
 }
 
+string Square::getName(){
+    return _name;
+}
+
+void Square::setPostScript(ostringstream & stream){
+    _stream = std::move(stream);
+}
+
+ostringstream & Square::getPostScript(){
+    //std::cout << _stream.str() << std::endl;
+    return _stream;
+}
 
 ostringstream & Square::toPostScript(ostringstream & stream){
     stream << "%%Square" << endl;
+    stream << "/square{" << endl;
     stream << "/width {" << getWidth() << " mul} def" << endl;
     stream << "/height {" << getHeight() << " mul} def" << endl;
     stream << "gsave" << endl;
@@ -37,7 +53,10 @@ ostringstream & Square::toPostScript(ostringstream & stream){
     stream << "grestore" << endl;
     stream << "stroke" << endl;
     stream << "grestore" << endl;
-    stream << "1 width 0 height rmoveto" << endl;
+    //stream << "1 width 0 height rmoveto" << endl;
+    stream << "}def" << endl;
+  //  stream << "square" <<endl;
+   
     stream << endl;
     return stream;
 }

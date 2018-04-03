@@ -12,9 +12,16 @@ using std::vector;
 using std::unique_ptr;
 using std::endl;
 using std::make_unique;
+using std::string;
 using std::ostringstream;
-void rotate(CompoundShape & shape, int degree){
-    
+
+ostringstream & CompoundShape::rotate(int degree, ostringstream & stream, string name){
+    stream << "gsave" << endl;
+    stream << "0 0 " << degree << " rotate" << endl;
+    stream << name << " stroke" << endl;
+    stream << "grestore" << endl;
+    stream << "1 width 0 height rmoveto" << endl;
+    return stream;
 }
 
 void scale(CompoundShape & shape, double fx, double fy){

@@ -12,8 +12,8 @@ using std::endl;
 using std::string;
 using std::ostringstream;
 
-Circle::Circle(double width):_radius(width/2),
-_width(width), _height(width)
+Circle::Circle(double width, const string & name):_radius(width/2),
+_width(width), _height(width), _name(name)
 {}
 
 double Circle::getWidth(){
@@ -28,9 +28,21 @@ double Circle::getRadius(){
     return _radius;
 }
 
+void Circle::setPostScript(ostringstream & stream){
+    _stream = std::move(stream);
+}
+
+string Circle::getName(){
+    return _name;
+}
+
+ostringstream & Circle::getPostScript(){
+    return _stream;
+}
 
 ostringstream & Circle::toPostScript(ostringstream & stream){
     stream << "%%Circle" << endl;
+    stream << "/circle{" << endl;
     stream << "/radius {" << getRadius() << " mul} def" << endl;
     stream << "/width {" << getWidth() << " mul} def" << endl;
     stream << "/height {" << getHeight() << " mul} def" << endl;
@@ -41,7 +53,9 @@ ostringstream & Circle::toPostScript(ostringstream & stream){
     stream << "grestore" << endl;
     stream << "stroke" << endl;
     stream << "grestore" << endl;
-    stream << "1 width 0 height rmoveto" << endl;
+    //stream << "1 width 0 height rmoveto" << endl;
+    stream << "}def" << endl;
+    //stream << "circle" <<endl;
     stream << endl;
     // drawBoundingBox(radius, stream);
     return stream;
