@@ -10,9 +10,10 @@
 using std::ostream;
 using std::endl;
 using std::ostringstream;
+using std::string;
 
-Rectangle::Rectangle(double width, double height)
-:_width(width), _height(height)
+Rectangle::Rectangle(double width, double height, const string & name)
+:_width(width), _height(height), _name(name)
 {}
 
 double Rectangle::getWidth(){
@@ -23,6 +24,18 @@ double Rectangle::getHeight(){
     return _height;
 }
 
+void Rectangle::setPostScript(ostringstream & stream){
+    _stream = std::move(stream);
+}
+
+string Rectangle::getName(){
+    return _name;
+}
+
+ostringstream & Rectangle::getPostScript(){
+    std::cout << _stream.str() << std::endl;
+    return _stream;
+}
 
 ostringstream & Rectangle::toPostScript(ostringstream & stream){
     stream << "%%Rectangle" << endl;
@@ -40,9 +53,9 @@ ostringstream & Rectangle::toPostScript(ostringstream & stream){
     stream << "grestore" << endl;
     stream << "stroke" << endl;
     stream << "grestore" << endl;
-    stream << "1 width 0 height rmoveto" << endl;
+   // stream << "1 width 0 height rmoveto" << endl;
     stream << "}def" << endl;
-    stream << "rectangle" <<endl;
+   // stream << "rectangle" <<endl;
     stream << endl;
     return stream;
 }

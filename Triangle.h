@@ -13,7 +13,7 @@
 
 class Triangle : public BasicShape{
 public:
-    Triangle(double width);
+    Triangle(double width, const std::string & name);
     std::ostringstream & toPostScript(std::ostringstream & stream);
     double getBoundingBox_X();
     double getBoundingBox_Y();
@@ -21,10 +21,15 @@ public:
     std::ostringstream & drawBoundingBox(double boxWidth, double boxHeight, std::ostringstream & stream);
     double getWidth();
     double getHeight();
+    std::string getName();
+    void setPostScript(std::ostringstream & stream);
+    std::ostringstream & getPostScript();
+
 private:
     double _width;
     double _height;
-    
+    std::string _name;
+    std::ostringstream _stream;
 };
 
 

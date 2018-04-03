@@ -20,6 +20,9 @@ public:
     virtual std::ostringstream & toPostScript(std::ostringstream & stream) = 0;
     virtual double getWidth() = 0;
     virtual double getHeight() = 0;
+    virtual std::ostringstream & getPostScript() = 0;
+    void getShape(Shape & s);
+    virtual std::string getName() = 0;
 private:
     double bounding_box;
     double current_point;

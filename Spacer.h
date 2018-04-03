@@ -13,15 +13,21 @@
 
 class Spacer : public BasicShape{
 public:
-    Spacer(double width, double height);
+    Spacer(double width, double height, const std::string & name);
     std::ostringstream & toPostScript(std::ostringstream & stream);
     void setWidth(double width);
     void setHeight(double height);
     double getWidth();
     double getHeight();
+    void setPostScript(std::ostringstream & stream);
+    std::string getName();
+    std::ostringstream & getPostScript();
+
 private:
     double _width;
     double _height;
+    std::string _name;
+    std::ostringstream _stream;
 };
 
 #endif /* Spacer_h */

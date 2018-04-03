@@ -5,6 +5,7 @@
 0 inch 1 inch rmoveto
 
 %%Circle
+/circle{
 /radius {12.5 mul} def
 /width {25 mul} def
 /height {25 mul} def
@@ -15,9 +16,15 @@ gsave
 grestore
 stroke
 grestore
-1 width 0 height rmoveto
+}def
 
+gsave
+0 0 0 rotate
+circle stroke
+grestore
+1 width 0 height rmoveto
 %%Spacer
+/spacer {
 gsave
 1 inch 0 inch rlineto
 0 inch 1 inch rlineto
@@ -26,10 +33,13 @@ closepath
 stroke
 grestore
 1 inch 0 inch rmoveto
+}def
+spacer
 
 %%Square
-/width {34 mul} def
-/height {34 mul} def
+/square{
+/width {45 mul} def
+/height {45 mul} def
 gsave
 1 width 0 height rlineto
 0 width 1 height rlineto
@@ -41,9 +51,15 @@ fill
 grestore
 stroke
 grestore
-1 width 0 height rmoveto
+}def
 
+gsave
+0 0 45 rotate
+square stroke
+grestore
+1 width 0 height rmoveto
 %%Spacer
+/spacer {
 gsave
 1 inch 0 inch rlineto
 0 inch 1 inch rlineto
@@ -52,8 +68,11 @@ closepath
 stroke
 grestore
 1 inch 0 inch rmoveto
+}def
+spacer
 
 %%Triangle
+/triangle{
 /width {72 mul} def
 /height {72 mul} def
 gsave
@@ -66,9 +85,15 @@ fill
 grestore
 stroke
 grestore
-1 width 0 height rmoveto
+}def
 
+gsave
+0 0 -10 rotate
+triangle stroke
+grestore
+1 width 0 height rmoveto
 %%Spacer
+/spacer {
 gsave
 1 inch 0 inch rlineto
 0 inch 1 inch rlineto
@@ -77,8 +102,11 @@ closepath
 stroke
 grestore
 1 inch 0 inch rmoveto
+}def
+spacer
 
 %%Rectangle
+/rectangle{
 /width {144 mul} def
 /height {72 mul} def
 gsave
@@ -92,9 +120,15 @@ fill
 grestore
 stroke
 grestore
-1 width 0 height rmoveto
+}def
 
+gsave
+0 0 10 rotate
+rectangle stroke
+grestore
+1 width 0 height rmoveto
 %%Spacer
+/spacer {
 gsave
 1 inch 0 inch rlineto
 0 inch 1 inch rlineto
@@ -103,4 +137,6 @@ closepath
 stroke
 grestore
 1 inch 0 inch rmoveto
+}def
+spacer
 

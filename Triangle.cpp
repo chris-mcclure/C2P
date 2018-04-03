@@ -10,9 +10,10 @@
 using std::ostream;
 using std::endl;
 using std::ostringstream;
+using std::string;
 
-Triangle::Triangle(double width)
-:_width(width), _height(width)
+Triangle::Triangle(double width, const string & name)
+:_width(width), _height(width), _name(name)
 {}
 
 double Triangle::getWidth(){
@@ -23,10 +24,22 @@ double Triangle::getHeight(){
     return _height;
 }
 
+string Triangle::getName(){
+    return _name;
+}
+
+void Triangle::setPostScript(ostringstream & stream){
+    _stream = std::move(stream);
+}
+
+ostringstream & Triangle::getPostScript(){
+    std::cout << _stream.str() << std::endl;
+    return _stream;
+}
 
 ostringstream & Triangle::toPostScript(ostringstream & stream){
     stream << "%%Triangle" << endl;
-    stream << "/triangle" << endl;
+    stream << "/triangle{" << endl;
     stream << "/width {" << getWidth() << " mul} def" << endl;
     stream << "/height {" << getHeight() << " mul} def" << endl;
     stream << "gsave" << endl;
@@ -39,9 +52,9 @@ ostringstream & Triangle::toPostScript(ostringstream & stream){
     stream << "grestore" << endl;
     stream << "stroke" << endl;
     stream << "grestore" << endl;
-    stream << "1 width 0 height rmoveto" << endl;
+   // stream << "1 width 0 height rmoveto" << endl;
     stream << "}def" << endl;
-    stream << "triangle" <<endl; 
+    //stream << "triangle" <<endl;
     stream << endl;
     return stream;
 }

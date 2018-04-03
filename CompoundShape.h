@@ -15,7 +15,7 @@
 #include <memory>
 class CompoundShape : public Shape{
 public:
-    void rotate(CompoundShape & shape, int degree);
+    std::ostringstream & rotate(int degree, std::ostringstream & stream, std::string name);
     void scale(CompoundShape & shape, double fx, double fy);
     void stackHorizontal(std::vector<std::unique_ptr<Shape>> & cShape, std::ostringstream & stream);
     void stackVertical(std::vector<std::unique_ptr<Shape>> & cShape, std::ostringstream & stream);
