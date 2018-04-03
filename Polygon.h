@@ -12,22 +12,17 @@
 
 class Polygon : public BasicShape{
 public:
-    Polygon(double numSides, double sideLength, const std::string & name);
+    Polygon(int numSides, double sideLength);
     std::ostringstream & toPostScript(std::ostringstream & stream);
     double getNumSides() const;
     double getSideLength() const;
     double getHeight();
     double getWidth();
-    void setPostScript(std::ostringstream & stream);
-    std::ostringstream & getPostScript();
-    std::string getName();
 private:
-    double _numSides;
+    int _numSides;
     double _width;
     double _height;
     double _sideLength;
-    std::string _name;
-    std::ostringstream _stream;
 };
 
 #endif /* Polygon_h */

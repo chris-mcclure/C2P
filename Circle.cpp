@@ -60,4 +60,3 @@ ostringstream & Circle::toPostScript(ostringstream & stream){
     // drawBoundingBox(radius, stream);
     return stream;
 }
-

@@ -25,7 +25,7 @@ ostringstream & CompoundShape::rotate(int degree, ostringstream & stream, string
 }
 
 void scale(CompoundShape & shape, double fx, double fy){
-    
+
 }
 
 void stackHorizontal(vector<unique_ptr<Shape>> & cShape, ostringstream & stream){
