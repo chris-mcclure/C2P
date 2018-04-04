@@ -23,8 +23,8 @@ public:
     virtual std::ostringstream & getPostScript() = 0;
     void getShape(Shape & s);
     virtual std::string getName() = 0;
-    void setWidth(double w);
-    void setHeight(double h);
+    virtual void setWidth(double w) = 0;
+    virtual void setHeight(double h) = 0;
     
 private:
     double bounding_box;
