@@ -13,7 +13,7 @@
 #include <vector>
 #include <fstream>
 #include <memory>
-class CompoundShape : public BasicShape{
+class CompoundShape : public BasicShape {
 public:
     std::ostringstream & rotate(int degree, std::ostringstream & stream, std::string name);
     std::ostringstream & scale(double width, double height, std::ostringstream & stream, std::string name);

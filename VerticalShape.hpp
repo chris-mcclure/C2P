@@ -8,9 +8,13 @@
 
 #ifndef VerticalShape_hpp
 #define VerticalShape_hpp
+#include "Shape.h"
+
 
 class VerticalShape{
 public:
+    VerticalShape(Shape &s1, Shape &s2);
+    VerticalShape(Shape &s1, Shape &s2, Shape &s3);
 private:
 };
 

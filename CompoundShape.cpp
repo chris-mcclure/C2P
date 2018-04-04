@@ -35,10 +35,16 @@ ostringstream & CompoundShape::scale(double width, double height, ostringstream 
 
 void stackHorizontal(vector<unique_ptr<Shape>> & cShape, ostringstream & stream){
     for(auto &i : cShape){
+        
+        stream << cShape[i].getName() << " stroke" << endl;
+        stream << "1 width 0 height translate" << endl;
     }
 }
 
 void stackVertical(vector<unique_ptr<Shape>> & cShape, ostringstream & stream){
     for(auto &i : cShape){
+        
+        stream << cShape[i].getName() << " stroke" << endl;
+        stream << "0 width 1 height translate << endl;
     }
 }
