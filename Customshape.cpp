@@ -10,10 +10,12 @@
 using std::ostream;
 using std::endl;
 using std::ostringstream;
+using std::string;
 #include <cmath>
 #include <math.h>
+#include <string>
 
-Custom::Custom(double degrees, const string & name):_radius(width/2),
+Custom::Custom(double degrees, const string & name, double width):_radius(width/2),
 _width(width), _height(width), _name(name)
 {}
 
@@ -45,7 +47,7 @@ ostringstream & Custom::getPostScript(){
     return _stream;
 }
 
-ostringstream & Circle::toPostScript(ostringstream & stream){
+ostringstream & Custom::toPostScript(ostringstream & stream){
   // stream << "300 300 translate" << endl;  <--- this puts shape in the middle of the page
   stream << "/rad 216 def " << endl;
   stream << "/rad1 rad 2 div def " << endl;

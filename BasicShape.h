@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include "CompoundShape.h"
+#include "Shape.h"
 
 class BasicShape : public Shape {
 public:

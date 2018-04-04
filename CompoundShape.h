@@ -10,10 +10,11 @@
 #define ComplexShape_h
 
 #include "BasicShape.h"
+#include "Shape.h"
 #include <vector>
 #include <fstream>
 #include <memory>
-class CompoundShape : public BasicShape {
+class CompoundShape : public Shape {
 public:
     std::ostringstream & rotate(int degree, std::ostringstream & stream, std::string name);
     std::ostringstream & scale(double width, double height, std::ostringstream & stream, std::string name);

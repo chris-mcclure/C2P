@@ -13,7 +13,7 @@ using std::ostringstream;
 #include <cmath>
 #include <math.h>
 
-Polygon::Polygon(int numSides, double sideLength, const string & name) //change sideLength to size
+Polygon::Polygon(int numSides, double sideLength, const std::string & name) //change sideLength to size
 :_numSides(numSides), _sideLength(sideLength),  _name(name)
 {}
 
@@ -78,7 +78,7 @@ void Polygon::setPostScript(ostringstream & stream){
     _stream = std::move(stream);
 }
 
-string Polygon::getName(){
+std::string Polygon::getName(){
     return _name;
 }
 

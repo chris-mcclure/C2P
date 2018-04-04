@@ -7,6 +7,7 @@
 //
 
 #include "CompoundShape.h"
+#include "Shape.h"
 using std::ostream;
 using std::vector;
 using std::unique_ptr;
@@ -36,7 +37,7 @@ ostringstream & CompoundShape::scale(double width, double height, ostringstream 
 void stackHorizontal(vector<unique_ptr<Shape>> & cShape, ostringstream & stream){
     for(auto &i : cShape){
         
-        stream << cShape[i].getName() << " stroke" << endl;
+        //print shape
         stream << "1 width 0 height translate" << endl;
     }
 }
@@ -44,7 +45,7 @@ void stackHorizontal(vector<unique_ptr<Shape>> & cShape, ostringstream & stream)
 void stackVertical(vector<unique_ptr<Shape>> & cShape, ostringstream & stream){
     for(auto &i : cShape){
         
-        stream << cShape[i].getName() << " stroke" << endl;
-        stream << "0 width 1 height translate << endl;
+        //print shape
+        stream << "0 width 1 height translate" << endl;
     }
 }

@@ -9,10 +9,11 @@
 #ifndef Polygon_h
 #define Polygon_h
 #include "BasicShape.h"
+using std::ostringstream;
 
 class Polygon : public BasicShape{
 public:
-    Polygon(int numSides, double sideLength, const string & name);
+    Polygon(int numSides, double sideLength, const std::string & name);
     std::ostringstream & toPostScript(std::ostringstream & stream);
     double getNumSides() const;
     double getSideLength() const;
@@ -20,6 +21,10 @@ public:
     double getWidth();
     void setWidth(double w);
     void setHeight(double h);
+    void setPostScript(ostringstream & stream);
+    std::string getName();
+    ostringstream & getPostScript();
+    
 
 private:
     int _numSides;
