@@ -24,11 +24,13 @@ ostringstream & CompoundShape::rotate(int degree, ostringstream & stream, string
     return stream;
 }
 
-void scale(CompoundShape & shape, double fx, double fy){
-    double w = shape.getWidth();
-    double h = shape.getHeight();
-    shape.setWidth(w*fx);
-    shape.setHeight(h*fy);
+ostringstream & CompoundShape::scale(double width, double height, ostringstream & stream, string name){
+  stream << "gsave" << endl;
+  stream << height << width << " scale" << endl;
+  stream << name << " stroke" << endl;
+  stream << "grestore" << endl;
+  stream << "1 width 0 height rmoveto" << endl;
+  return stream;
 }
 
 void stackHorizontal(vector<unique_ptr<Shape>> & cShape, ostringstream & stream){

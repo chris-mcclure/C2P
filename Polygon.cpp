@@ -13,10 +13,9 @@ using std::ostringstream;
 #include <cmath>
 #include <math.h>
 
-Polygon::Polygon(int numSides, double sideLength) //change sideLength to size
-:_numSides(numSides), _sideLength(sideLength)
+Polygon::Polygon(int numSides, double sideLength, const string & name) //change sideLength to size
+:_numSides(numSides), _sideLength(sideLength),  _name(name)
 {}
-
 
 double Polygon::getWidth(){
     switch (_numSides % 2) {
@@ -34,7 +33,7 @@ double Polygon::getWidth(){
         default:
             break;
     }
-    
+
     return _width;
 }
 
@@ -54,8 +53,8 @@ double Polygon::getHeight(){
         default:
             break;
     }
-    
-    
+
+
     return _height;
 }
 
@@ -75,6 +74,17 @@ double Polygon::getSideLength() const{
     return _sideLength;
 }
 
+void Polygon::setPostScript(ostringstream & stream){
+    _stream = std::move(stream);
+}
+
+string Polygon::getName(){
+    return _name;
+}
+
+ostringstream & Polygon::getPostScript(){
+    return _stream;
+}
 ostringstream & Polygon::toPostScript(ostringstream & stream){
 
     stream << "/defpoly {" << endl;
@@ -106,8 +116,5 @@ ostringstream & Polygon::toPostScript(ostringstream & stream){
     stream << "grestore" << endl;
     stream << "} def" << endl;
     stream << "100" << getNumSides() << getHeight() << getWidth() << "drawpoly"<< endl;
-    //this is the how its set up I just gave it a set size of 100 but used
-    // your functions to complete the rest.  
-    //100 6 300 200 drawpoly %size, #sides, lenght?, width?
     return stream;
 }

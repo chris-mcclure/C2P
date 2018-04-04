@@ -6,13 +6,13 @@
 //  Copyright © 2018 Chris McClure. All rights reserved.
 //
 
-#ifndef Polygon_h
-#define Polygon_h
+#ifndef Customshape_h
+#define Customshape_h
 #include "BasicShape.h"
 
-class Polygon : public BasicShape{
+class Custom : public BasicShape{
 public:
-    Polygon(int numSides, double sideLength, const string & name);
+    Custom(double degree, double sideLength);
     std::ostringstream & toPostScript(std::ostringstream & stream);
     double getNumSides() const;
     double getSideLength() const;
@@ -26,8 +26,6 @@ private:
     double _width;
     double _height;
     double _sideLength;
-    std::ostringstream _stream;
-    std::string _name;
 };
 
-#endif /* Polygon_h */
+#endif /*Customshape_h */
