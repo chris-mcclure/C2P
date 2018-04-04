@@ -59,6 +59,13 @@ double Polygon::getHeight(){
     return _height;
 }
 
+void Polygon::setWidth(double w) {
+    _width = w;
+}
+
+void Polygon::setHeight(double h) {
+    _height = h;
+}
 
 double Polygon::getNumSides() const{
     return _numSides;

@@ -18,6 +18,9 @@ public:
     double getSideLength() const;
     double getHeight();
     double getWidth();
+    void setWidth(double w);
+    void setHeight(double h);
+    
 private:
     int _numSides;
     double _width;

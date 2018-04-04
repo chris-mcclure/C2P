@@ -28,6 +28,14 @@ string Triangle::getName(){
     return _name;
 }
 
+void Triangle::setWidth(double w) {
+    _width = w;
+}
+
+void Triangle::setHeight(double h) {
+    _height = h;
+}
+
 void Triangle::setPostScript(ostringstream & stream){
     _stream = std::move(stream);
 }
