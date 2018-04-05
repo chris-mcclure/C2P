@@ -12,6 +12,7 @@
 #include "Rectangle.h"
 #include "Polygon.h"
 #include "Spacer.h"
+#include "CustomShape.hpp"
 #include "catch.hpp"
 #include <memory>
 using std::ostream;
@@ -106,9 +107,14 @@ TEST_CASE("Basic Shape creation", "[Basic Shapes]"){
         REQUIRE(shape->getWidth() == 72);
         REQUIRE(shape->getHeight() == 72);
         
-        //shape = std::move(std::make_unique<Polygon>(5, 50, "polygon"));
-        //shape->toPostScript(stream);
-        //shape->rotate(0, stream, "polygon");
+        //watermelon
+       /* shape = std::move(std::make_unique<Custom>(72, "watermelon", 72));
+        shape->toPostScript(stream);
+        shape->rotate(0, stream, shape->getName());
+        */
+        /*shape = std::move(std::make_unique<Polygon>(5, 50, "polygon"));
+        shape->toPostScript(stream);
+        shape->rotate(0, stream, "polygon");*/
         
         post_stream << stream.str();
         post_stream.close();

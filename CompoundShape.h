@@ -1,15 +1,7 @@
-//
-//  ComplexShape.hpp
-//  C2P
-//
-//  Created by Chris McClure on 3/23/18.
-//  Copyright © 2018 Chris McClure. All rights reserved.
-//
 
-#ifndef ComplexShape_h
-#define ComplexShape_h
+#ifndef CompoundShape_h
+#define CompoundShape_h
 
-#include "BasicShape.h"
 #include "Shape.h"
 #include <vector>
 #include <fstream>
@@ -23,3 +15,4 @@ public:
 
 };
 #endif /* ComplexShape_h */
+

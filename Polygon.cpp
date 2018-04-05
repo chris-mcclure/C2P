@@ -10,8 +10,6 @@
 using std::ostream;
 using std::endl;
 using std::ostringstream;
-#include <cmath>
-#include <math.h>
 
 Polygon::Polygon(int numSides, double sideLength, const std::string & name) //change sideLength to size
 :_numSides(numSides), _sideLength(sideLength),  _name(name)
@@ -86,7 +84,7 @@ ostringstream & Polygon::getPostScript(){
     return _stream;
 }
 ostringstream & Polygon::toPostScript(ostringstream & stream){
-
+    
     stream << "/defpoly {" << endl;
     stream << "4 dict begin /p exch def /n exch def" << endl;
     stream << "/m matrix currentmatrix def" << endl;
