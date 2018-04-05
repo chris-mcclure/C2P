@@ -116,4 +116,3 @@ ostringstream & Polygon::toPostScript(ostringstream & stream){
     stream << "100" << getNumSides() << getHeight() << getWidth() << "drawpoly"<< endl;
     return stream;
 }
-

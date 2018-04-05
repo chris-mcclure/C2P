@@ -55,8 +55,7 @@ ostringstream & Square::toPostScript(ostringstream & stream){
     stream << "grestore" << endl;
     //stream << "1 width 0 height rmoveto" << endl;
     stream << "}def" << endl;
-  //  stream << "square" <<endl;
-   
+    //stream << "square" <<endl;
     stream << endl;
     return stream;
 }
@@ -72,7 +71,7 @@ ostringstream & Square::drawBoundingBox(double sideLength, ostringstream & strea
      stream << "closepath" << endl;
      stream << "stroke" << endl;*/
     return stream;
-    
+
 }
 
 ostringstream & Square::drawBoundingBox(double boxWidth, double boxHeight, ostringstream & stream){
