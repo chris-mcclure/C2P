@@ -28,6 +28,14 @@ double Circle::getRadius(){
     return _radius;
 }
 
+void Circle::setWidth(double w) {
+    _width = w;
+}
+
+void Circle::setHeight(double h) {
+    _height = h;
+}
+
 void Circle::setPostScript(ostringstream & stream){
     _stream = std::move(stream);
 }

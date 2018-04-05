@@ -31,7 +31,7 @@ double Polygon::getWidth(){
         default:
             break;
     }
-    
+
     return _width;
 }
 
@@ -51,8 +51,8 @@ double Polygon::getHeight(){
         default:
             break;
     }
-    
-    
+
+
     return _height;
 }
 

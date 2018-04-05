@@ -24,6 +24,8 @@ public:
     void setPostScript(std::ostringstream & stream);
     std::string getName();
     std::ostringstream & getPostScript();
+    void setWidth(double w);
+    void setHeight(double h);
     
 private:
     double _width;

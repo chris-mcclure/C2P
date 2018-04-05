@@ -20,6 +20,9 @@ public:
     double getWidth();
     double getHeight();
     double getRadius();
+    void setWidth(double w);
+    void setHeight(double h);
+    
     void setPostScript(std::ostringstream & stream);
     std::ostringstream & getPostScript();
     std::string getName();
