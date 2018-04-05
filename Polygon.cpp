@@ -10,21 +10,59 @@
 using std::ostream;
 using std::endl;
 using std::ostringstream;
-using std::string;
 
-Polygon::Polygon(double numSides, double sideLength, const string & name)
-:_numSides(numSides), _sideLength(sideLength), _name(name)
+Polygon::Polygon(int numSides, double sideLength, const std::string & name) //change sideLength to size
+:_numSides(numSides), _sideLength(sideLength),  _name(name)
 {}
 
-
 double Polygon::getWidth(){
+    switch (_numSides % 2) {
+        case 0:
+            if(_numSides % 4 == 0) {
+                _width = (_sideLength * cos(M_PI/_numSides))/(sin(M_PI/_numSides));
+            }
+            else {
+                _width = _sideLength / (sin(M_PI/_numSides));
+            }
+            break;
+        case 1:
+            _width = (_sideLength * sin(M_PI*(_numSides - 1)/(2 * _numSides))) / (sin(M_PI/_numSides));
+            break;
+        default:
+            break;
+    }
+    
     return _width;
 }
 
 double Polygon::getHeight(){
+    switch (_numSides % 2) {
+        case 0:
+            if(_numSides % 4 == 0) {
+                _height = _sideLength * (cos(M_PI/_numSides)) / (sin(M_PI/_numSides));
+            }
+            else {
+                _height = _sideLength * (cos(M_PI/_numSides)) / (sin(M_PI/_numSides));
+            }
+            break;
+        case 1:
+            _height = _sideLength * (1 + cos(M_PI/_numSides)) / (2 * sin(M_PI/_numSides));
+            break;
+        default:
+            break;
+    }
+    
+    
     return _height;
 }
 
+void Polygon::setWidth(double w) {
+    _width = w;
+}
+
+void Polygon::setHeight(double h) {
+    _height = h;
+}
 
 double Polygon::getNumSides() const{
     return _numSides;
@@ -34,23 +72,19 @@ double Polygon::getSideLength() const{
     return _sideLength;
 }
 
-string Polygon::getName(){
-    return _name;
-}
-
 void Polygon::setPostScript(ostringstream & stream){
     _stream = std::move(stream);
 }
 
-ostringstream & Polygon::getPostScript(){
-    std::cout << _stream.str() << std::endl;
-    return _stream;
+std::string Polygon::getName(){
+    return _name;
 }
 
+ostringstream & Polygon::getPostScript(){
+    return _stream;
+}
 ostringstream & Polygon::toPostScript(ostringstream & stream){
-    stream << "%%Polygon" << endl;
-    stream << "/numSides {" << getNumSides() << "} def" << endl;
-    stream << "/sideLength {" << getSideLength() << " mul} def" << endl;
+    
     stream << "/defpoly {" << endl;
     stream << "4 dict begin /p exch def /n exch def" << endl;
     stream << "/m matrix currentmatrix def" << endl;
@@ -69,26 +103,17 @@ ostringstream & Polygon::toPostScript(ostringstream & stream){
     stream << "end exec" << endl;
     stream << "} bind def" << endl;
     stream << endl;
-    stream << "/polygon {" << endl;
+    stream << "/drawpoly {" << endl;
     stream << "gsave" << endl;
     stream << "translate" << endl;
     stream << "1 index 0 moveto" << endl;
     stream << "{" << endl;
     stream << "1 0 lineto" << endl;
     stream << "} defpoly" << endl;
-    stream << "closepath" << endl;
-    stream << "gsave" << endl;
-    stream << "0.4 0.3 0.8 setrgbcolor" << endl;
-    stream << "fill" << endl;
-    stream << "grestore" << endl;
-    stream << "stroke" << endl;
+    stream << "closepath stroke" << endl;
     stream << "grestore" << endl;
     stream << "} def" << endl;
-    stream << "72 numSides 144 72 drawpoly" << endl;
-    stream << "1 sideLength 0 sideLength rmoveto" << endl;
-    //this is the how its set up I just gave it a set size of 100 but used
-    // your functions to complete the rest.
-    //100 6 300 200 drawpoly %size, #sides, lenght?, width?
+    stream << "100" << getNumSides() << getHeight() << getWidth() << "drawpoly"<< endl;
     return stream;
 }
 
