@@ -104,15 +104,25 @@ ostringstream & Polygon::toPostScript(ostringstream & stream){
     stream << "} bind def" << endl;
     stream << endl;
     stream << "/drawpoly {" << endl;
+    
     stream << "gsave" << endl;
     stream << "translate" << endl;
     stream << "1 index 0 moveto" << endl;
     stream << "{" << endl;
     stream << "1 0 lineto" << endl;
     stream << "} defpoly" << endl;
+    stream << "gsave" << endl;
+    stream << "0.7 0.5 0.7 setrgbcolor fill" << endl;
+    stream << "grestore" << endl;
+
     stream << "closepath stroke" << endl;
     stream << "grestore" << endl;
+    stream << 72*5 << " " << 72*5 << " moveto" << endl;
     stream << "} def" << endl;
-    stream << "100" << getNumSides() << getHeight() << getWidth() << "drawpoly"<< endl;
+
+    stream << "gsave" << endl;
+    stream <<  72*3 << " " << 72*3 << " translate" << endl;
+    stream << "100 " << getNumSides() << " " << getHeight() << " " << getWidth() << " drawpoly"<< endl;
+    stream << "grestore" << endl;
     return stream;
 }

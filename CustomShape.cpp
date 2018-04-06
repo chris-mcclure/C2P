@@ -16,8 +16,7 @@ using std::string;
 #include <math.h>
 #include <string>
 
-Custom::Custom(double degrees, const string & name, double width):_radius(width/2),
-_width(width), _height(width), _name(name)
+Custom::Custom(double xpos, double ypos, double radius, string name):_radius(radius), _xpos(xpos), _ypos(ypos), _name(name)
 {}
 
 double Custom::getWidth(){
@@ -28,17 +27,17 @@ double Custom::getHeight(){
     return _height;
 }
 
+double Custom::getX() const{
+    return _xpos;
+}
+
+double Custom::getY() const{
+    return _ypos;
+}
 double Custom::getRadius(){
     return _radius;
 }
 
-void Custom::setWidth(double w) {
-    _width = w;
-}
-
-void Custom::setHeight(double h) {
-    _height = h;
-}
 
 string Custom::getName(){
     return _name;
@@ -48,36 +47,40 @@ ostringstream & Custom::getPostScript(){
     return _stream;
 }
 
+ostringstream & Custom::rotate(int degree, ostringstream & stream, string name){
+    stream << "gsave" << endl;
+    stream << "0 0 " << degree << " rotate" << endl;
+    stream << name << " stroke" << endl;
+    stream << "grestore" << endl;
+    return stream;
+}
+
 ostringstream & Custom::toPostScript(ostringstream & stream){
-    // stream << "300 300 translate" << endl;  <--- this puts shape in the middle of the page
-   /* stream << "%green part" << endl;
-    stream << "/watermelon{" << endl;
-    stream << "200 200 110 180 0 arc closepath" << endl;
+    stream << "%!" << endl;
+    stream << "%%Custom Shape" << endl;
+    stream << "/watermelon {" << endl;
+    stream << "/radius {" << getRadius() << " mul} def" << endl;
+    stream << "/xpos {" << getX() << " mul} def" << endl;
+    stream << "/ypos {" << getY() << " mul} def" << endl;
+    
+    stream << "gsave" << endl;
+    stream << "1 xpos 1 ypos 1 radius 10 add 180 0 arc closepath" << endl;
     stream << "gsave" << endl;
     stream << "0 1 0.5 setrgbcolor fill" << endl;
     stream << "grestore" << endl;
     stream << "stroke" << endl;
     stream << "grestore" << endl;
 
-    stream << "%melon" << endl;
     stream << "gsave" << endl;
-    stream << "200 200 110 180 0 arc closepath" << endl;
+    stream << "1 xpos 1 ypos 1 radius 180 0 arc closepath" << endl;
     stream << "gsave" << endl;
     stream << "1 0 0.3 setrgbcolor fill" << endl;
     stream << "grestore" << endl;
     stream << "stroke" << endl;
     stream << "grestore" << endl;
-    
+
     stream << "gsave" << endl;
-    stream << "240 220 40 0 360 arc closepath" << endl;
-    stream << "gsave" << endl;
-    stream << " 0.95 setgray fill" << endl;
-    stream << "grestore" << endl;
-    stream << "stroke" << endl;
-    stream << "grestore" << endl;
-    
-    stream << "gsave" << endl;
-    stream << "160 220 40 0 360 arc closepath" << endl;
+    stream << "1 xpos 40 add 1 ypos 20 add 1 radius 60 sub 0 360 arc closepath" << endl;
     stream << "gsave" << endl;
     stream << "0.95 setgray fill" << endl;
     stream << "grestore" << endl;
@@ -85,7 +88,16 @@ ostringstream & Custom::toPostScript(ostringstream & stream){
     stream << "grestore" << endl;
     
     stream << "gsave" << endl;
-    stream << "240 220 10 0 360 arc closepath" << endl;
+    stream << "1 xpos 40 sub 1 ypos 20 add 1 radius 60 sub 0 360 arc closepath" << endl;
+    stream << "gsave" << endl;
+    stream << "0.95 setgray fill" << endl;
+    stream << "grestore" << endl;
+    stream << "stroke" << endl;
+    stream << "grestore" << endl;
+    
+    
+    stream << "gsave" << endl;
+    stream << "1 xpos 40 add 1 ypos 20 add 1 radius 90 sub 0 360 arc closepath" << endl;
     stream << "gsave" << endl;
     stream << "0 setgray fill" << endl;
     stream << "grestore" << endl;
@@ -93,7 +105,7 @@ ostringstream & Custom::toPostScript(ostringstream & stream){
     stream << "grestore" << endl;
     
     stream << "gsave" << endl;
-    stream << "160 220 10 0 360 arc closepath" << endl;
+    stream << "1 xpos 40 sub 1 ypos 20 add 1 radius 90 sub 0 360 arc closepath" << endl;
     stream << "gsave" << endl;
     stream << "0 setgray fill" << endl;
     stream << "grestore" << endl;
@@ -101,15 +113,15 @@ ostringstream & Custom::toPostScript(ostringstream & stream){
     stream << "grestore" << endl;
     
     stream << "gsave" << endl;
-    stream << "200 175 50 180 0 arc closepath" << endl;
+    stream << "1 xpos 1 ypos 25 sub 1 radius 50 sub 180 0 arc closepath" << endl;
     stream << "gsave" << endl;
     stream << "1 setgray fill" << endl;
     stream << "grestore" << endl;
     stream << "stroke" << endl;
     stream << "grestore" << endl;
     stream << "} def" << endl;
+    
     stream << endl;
-    */
     return stream;
 
 }

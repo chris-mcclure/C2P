@@ -52,9 +52,7 @@ TEST_CASE("Basic Shape creation", "[Basic Shapes]"){
         intro(stream);
         std::unique_ptr<BasicShape> shape;
         
-        
         REQUIRE(post_stream.is_open() == true);
-
         //Circle
         shape = std::move(std::make_unique<Circle>(25, "circle"));
         shape->toPostScript(stream);
@@ -100,6 +98,7 @@ TEST_CASE("Basic Shape creation", "[Basic Shapes]"){
         shape->rotate(10, stream, shape->getName());
         REQUIRE(shape->getWidth() == 144);
         REQUIRE(shape->getHeight() == 72);
+
         
         //Spacer
         shape = std::move(std::make_unique<Spacer>(72, 72, "spacer"));
@@ -107,52 +106,51 @@ TEST_CASE("Basic Shape creation", "[Basic Shapes]"){
         REQUIRE(shape->getWidth() == 72);
         REQUIRE(shape->getHeight() == 72);
         
-        //watermelon
-       /* shape = std::move(std::make_unique<Custom>(72, "watermelon", 72));
-        shape->toPostScript(stream);
-        shape->rotate(0, stream, shape->getName());
-        */
+    
         /*shape = std::move(std::make_unique<Polygon>(5, 50, "polygon"));
         shape->toPostScript(stream);
-        shape->rotate(0, stream, "polygon");*/
-        
+        shape->rotate(0, stream, "polygon");
+        */
         post_stream << stream.str();
         post_stream.close();
-        stream << "\377";
-        
+        stream << "/377";
         string contents;
         contents = readFile("template.ps");
-        REQUIRE(contents == stream.str());
+       // REQUIRE(contents == stream.str());
         REQUIRE(shape->checkPostScript("C2P.ps") == "%!");
+    }
+    
+  SECTION("custom shape"){
+        ofstream post_stream("custom1.ps");
+        REQUIRE(post_stream.is_open() == true);
+        ostringstream stream;
+      
+        std::unique_ptr<Custom> custom = std::make_unique<Custom>(144*3, 144*3, 100, "watermelon");
+       
+        REQUIRE(custom->getRadius() == 100);
+        REQUIRE(custom->getX() == 144*3);
+        REQUIRE(custom->getY() == 144*3);
+        REQUIRE(custom->getName() == "watermelon");
+        custom->toPostScript(stream);
+        custom->rotate(10, stream, custom->getName());
+        post_stream << stream.str();
+        post_stream.close();
+        
+        REQUIRE(custom->checkPostScript("custom1.ps") == "%!");
         REQUIRE(post_stream.is_open() == false);
+        
+    }
+    
+    SECTION("polygon"){
+        ofstream post_stream("polygon.ps");
+        REQUIRE(post_stream.is_open() == true);
+        ostringstream stream;
+        std::unique_ptr<Polygon> poly = std::make_unique<Polygon>(8, 50, "polygon");
+        poly->toPostScript(stream);
+        post_stream << stream.str();
+        post_stream.close();
+        
     }
 }
 
 
-//*** Attempting to create a compound shape through vector ***
-
-TEST_CASE("compund shape creation", "[compund]"){
-    ofstream post_stream("c3.ps");
-    ostringstream stream;
-    intro(stream);
-    
-    vector<unique_ptr<CompoundShape>> _cShape;
-    unique_ptr<CompoundShape> circle = std::make_unique<Circle>(25, "circle");
-    unique_ptr<CompoundShape> square = std::make_unique<Square>(34, "square");
-    unique_ptr<CompoundShape> triangle = std::make_unique<Triangle>(72, "triangle");
-    unique_ptr<CompoundShape> rectangle = std::make_unique<Rectangle>(72, 144, "rectangle");
-    unique_ptr<CompoundShape> spacer = std::make_unique<Spacer>(72, 72, "spacer");
-    
-    _cShape.push_back(std::move(circle));
-    _cShape.push_back(std::move(square));
-    _cShape.push_back(std::move(triangle));
-    _cShape.push_back(std::move(rectangle));
-    _cShape.push_back(std::move(spacer));
-    
-    for(auto &i : _cShape){
-        i->toPostScript(stream);
-    }
-    post_stream << stream.str();
-    post_stream << "showpage" << endl;
-    post_stream.close();
-}
