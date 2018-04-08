@@ -1,3 +1,4 @@
+
 //
 //  Customshape.cpp
 //  C2P
@@ -6,7 +7,7 @@
 //  Copyright © 2018 Chris McClure. All rights reserved.
 //
 
-#include "Customshape.h"
+#include "CustomShape.hpp"
 using std::ostream;
 using std::endl;
 using std::ostringstream;
@@ -48,16 +49,67 @@ ostringstream & Custom::getPostScript(){
 }
 
 ostringstream & Custom::toPostScript(ostringstream & stream){
-  // stream << "300 300 translate" << endl;  <--- this puts shape in the middle of the page
-  stream << "/rad 216 def " << endl;
-  stream << "/rad1 rad 2 div def " << endl;
-  stream << "/rad2 rad 12 div def " << endl;
-  stream << "1 1 1 setrgbcolor fill " << endl;
-  stream << "0 rad1 neg rad1 270 90 arc " << endl; //270 and 90 values are degree values
-  stream << "0 rad1 rad1 270 90 arcn " << endl; //270 and 90 values are degrees values
-  stream << "0 0 0 setrgbcolor eofill " << endl; // ^^replace with degrees value.
-  stream << "fill " << endl;
-  stream << "stroke " << endl;
-  stream << "showpage " << endl;
-  return stream;
+    // stream << "300 300 translate" << endl;  <--- this puts shape in the middle of the page
+   /* stream << "%green part" << endl;
+    stream << "/watermelon{" << endl;
+    stream << "200 200 110 180 0 arc closepath" << endl;
+    stream << "gsave" << endl;
+    stream << "0 1 0.5 setrgbcolor fill" << endl;
+    stream << "grestore" << endl;
+    stream << "stroke" << endl;
+    stream << "grestore" << endl;
+
+    stream << "%melon" << endl;
+    stream << "gsave" << endl;
+    stream << "200 200 110 180 0 arc closepath" << endl;
+    stream << "gsave" << endl;
+    stream << "1 0 0.3 setrgbcolor fill" << endl;
+    stream << "grestore" << endl;
+    stream << "stroke" << endl;
+    stream << "grestore" << endl;
+    
+    stream << "gsave" << endl;
+    stream << "240 220 40 0 360 arc closepath" << endl;
+    stream << "gsave" << endl;
+    stream << " 0.95 setgray fill" << endl;
+    stream << "grestore" << endl;
+    stream << "stroke" << endl;
+    stream << "grestore" << endl;
+    
+    stream << "gsave" << endl;
+    stream << "160 220 40 0 360 arc closepath" << endl;
+    stream << "gsave" << endl;
+    stream << "0.95 setgray fill" << endl;
+    stream << "grestore" << endl;
+    stream << "stroke" << endl;
+    stream << "grestore" << endl;
+    
+    stream << "gsave" << endl;
+    stream << "240 220 10 0 360 arc closepath" << endl;
+    stream << "gsave" << endl;
+    stream << "0 setgray fill" << endl;
+    stream << "grestore" << endl;
+    stream << "stroke" << endl;
+    stream << "grestore" << endl;
+    
+    stream << "gsave" << endl;
+    stream << "160 220 10 0 360 arc closepath" << endl;
+    stream << "gsave" << endl;
+    stream << "0 setgray fill" << endl;
+    stream << "grestore" << endl;
+    stream << "stroke" << endl;
+    stream << "grestore" << endl;
+    
+    stream << "gsave" << endl;
+    stream << "200 175 50 180 0 arc closepath" << endl;
+    stream << "gsave" << endl;
+    stream << "1 setgray fill" << endl;
+    stream << "grestore" << endl;
+    stream << "stroke" << endl;
+    stream << "grestore" << endl;
+    stream << "} def" << endl;
+    stream << endl;
+    */
+    return stream;
+
 }

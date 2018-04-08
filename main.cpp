@@ -89,20 +89,20 @@ TEST_CASE("Basic Shape creation", "[Basic Shapes]"){
         REQUIRE(shape->getHeight() == 72);
         
         //Spacer
-        shape = std::move(std::make_unique<Spacer>(72, 72, "spacer"));
+        shape = std::make_unique<Spacer>(72, 72, "spacer");
         shape->toPostScript(stream);
         REQUIRE(shape->getWidth() == 72);
         REQUIRE(shape->getHeight() == 72);
         
         //Rectangle
-        shape = std::move(std::make_unique<Rectangle>(144, 72, "rectangle"));
+        shape = std::make_unique<Rectangle>(144, 72, "rectangle");
         shape->toPostScript(stream);
         shape->rotate(10, stream, shape->getName());
         REQUIRE(shape->getWidth() == 144);
         REQUIRE(shape->getHeight() == 72);
         
         //Spacer
-        shape = std::move(std::make_unique<Spacer>(72, 72, "spacer"));
+        shape = std::make_unique<Spacer>(72, 72, "spacer");
         shape->toPostScript(stream);
         REQUIRE(shape->getWidth() == 72);
         REQUIRE(shape->getHeight() == 72);
@@ -130,7 +130,7 @@ TEST_CASE("Basic Shape creation", "[Basic Shapes]"){
 
 
 //*** Attempting to create a compound shape through vector ***
-
+/*
 TEST_CASE("compund shape creation", "[compund]"){
     ofstream post_stream("c3.ps");
     ostringstream stream;
@@ -156,3 +156,4 @@ TEST_CASE("compund shape creation", "[compund]"){
     post_stream << "showpage" << endl;
     post_stream.close();
 }
+*/
