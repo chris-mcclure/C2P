@@ -39,7 +39,7 @@ ostringstream & CompoundShape::scale(double width, double height, ostringstream 
 
 }
 
-void stackHorizontal(vector<string> & name, ostringstream & stream){
+ostringstream & stackHorizontal(vector<string> & name, ostringstream & stream){
     
     for (int i = 0; i < name.size(); ++i) {
         if (name[i] == "triangle"){
@@ -76,14 +76,10 @@ void stackHorizontal(vector<string> & name, ostringstream & stream){
             
         }
     }
-    
-    
-    
-    
-    
+    return stream;
 }
 
-void stackVertical(vector<string> & name, ostringstream & stream){
+ostringstream & stackVertical(vector<string> & name, ostringstream & stream){
     
     for (int i = 0; i < name.size(); ++i) {
         if (name[i] == "triangle"){
@@ -120,5 +116,6 @@ void stackVertical(vector<string> & name, ostringstream & stream){
             
         }
     }
+    return stream;
 }
 
