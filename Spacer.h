@@ -9,19 +9,19 @@
 #ifndef Spacer_h
 #define Spacer_h
 
-#include "BasicShape.h"
+#include "Shape.h"
 
-class Spacer : public BasicShape{
+class Spacer : public Shape{
 public:
     Spacer(double width, double height, const std::string & name);
-    std::ostringstream & toPostScript(std::ostringstream & stream);
-    void setWidth(double width);
-    void setHeight(double height);
-    double getWidth();
-    double getHeight();
+    std::ostringstream & toPostScript(std::ostringstream & stream)override;
+    void setWidth(double width)override;
+    void setHeight(double height)override;
+    double getWidth()override;
+    double getHeight()override;
     void setPostScript(std::ostringstream & stream);
-    std::string getName();
-    std::ostringstream & getPostScript();
+    std::string getName()override;
+    std::ostringstream & getPostScript()override;
 
 private:
     double _width;

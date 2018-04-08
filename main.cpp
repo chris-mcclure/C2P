@@ -50,7 +50,7 @@ TEST_CASE("Basic Shape creation", "[Basic Shapes]"){
         ofstream post_stream("C2P.ps");
         ostringstream stream;
         intro(stream);
-        std::unique_ptr<BasicShape> shape;
+        std::unique_ptr<Shape> shape;
         
         
         REQUIRE(post_stream.is_open() == true);

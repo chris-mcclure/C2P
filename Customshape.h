@@ -11,7 +11,7 @@
 #include "BasicShape.h"
 #include <string>
 
-class Custom : public BasicShape{
+class Custom : public Shape{
 public:
     Custom(double degree, const std::string & name, double width);
     std::ostringstream & toPostScript(std::ostringstream & stream);
