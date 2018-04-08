@@ -116,6 +116,7 @@ TEST_CASE("Basic Shape creation", "[Basic Shapes]"){
         REQUIRE(contents == stream.str());
         REQUIRE(shape->checkPostScript("C2P.ps") == "%!");
     }
+
     
   SECTION("custom shape"){
         ofstream post_stream("custom1.ps");
@@ -163,5 +164,4 @@ TEST_CASE("Basic Shape creation", "[Basic Shapes]"){
         
     }
 }
-
 
