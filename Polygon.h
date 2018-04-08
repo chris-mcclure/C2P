@@ -9,7 +9,6 @@
 #include <cmath>
 #include <math.h>
 #include "BasicShape.h"
-using std::ostringstream;
 
 
 class Polygon : public BasicShape{
@@ -27,7 +26,6 @@ public:
     std::ostringstream & getPostScript();
     
     
-
 private:
     int _numSides;
     double _width;
