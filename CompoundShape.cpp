@@ -83,7 +83,8 @@ void stackHorizontal(vector<string> & name, ostringstream & stream){
     
 }
 
-void stackVertical(vector<string> name, ostringstream & stream){
+void stackVertical(vector<string> & name, ostringstream & stream){
+    
     for (int i = 0; i < name.size(); ++i) {
         if (name[i] == "triangle"){
             Triangle m(1, "triangle");
