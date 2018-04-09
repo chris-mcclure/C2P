@@ -56,7 +56,7 @@ TEST_CASE("Basic Shape creation", "[Basic Shapes]"){
         //Circle
         shape = std::make_unique<Circle>(25, "circle");
         shape->toPostScript(stream);
-        shape->rotate(0, stream, shape->getName());
+       // shape->rotate(0, stream, shape->getName());
         REQUIRE(shape->getWidth() == 25);
         REQUIRE(shape->getHeight() == 25);
       
@@ -69,7 +69,7 @@ TEST_CASE("Basic Shape creation", "[Basic Shapes]"){
         //Square
         shape = std::make_unique<Square>(45, "square");
         shape->toPostScript(stream);
-        shape->rotate(45, stream, shape->getName());
+       // shape->rotate(45, stream, shape->getName());
         REQUIRE(shape->getWidth() == 45);
         REQUIRE(shape->getHeight() == 45);
         
@@ -82,7 +82,7 @@ TEST_CASE("Basic Shape creation", "[Basic Shapes]"){
         //Triangle
         shape = std::make_unique<Triangle>(72, "triangle");
         shape->toPostScript(stream);
-        shape->rotate(-10, stream, shape->getName());
+     //   shape->rotate(-10, stream, shape->getName());
         REQUIRE(shape->getWidth() == 72);
         REQUIRE(shape->getHeight() == 72);
         
@@ -95,7 +95,7 @@ TEST_CASE("Basic Shape creation", "[Basic Shapes]"){
         //Rectangle
         shape = std::make_unique<Rectangle>(144, 72, "rectangle");
         shape->toPostScript(stream);
-        shape->rotate(10, stream, shape->getName());
+       // shape->rotate(10, stream, shape->getName());
         REQUIRE(shape->getWidth() == 144);
         REQUIRE(shape->getHeight() == 72);
 
@@ -118,6 +118,7 @@ TEST_CASE("Basic Shape creation", "[Basic Shapes]"){
     }
 
     
+    /*
   SECTION("custom shape"){
         ofstream post_stream("custom1.ps");
         REQUIRE(post_stream.is_open() == true);
@@ -140,7 +141,7 @@ TEST_CASE("Basic Shape creation", "[Basic Shapes]"){
         REQUIRE(contents == stream.str());
         REQUIRE(custom->checkPostScript("custom1.ps") == "%!");
         
-    }
+    }*/
     
     SECTION("polygon"){
         ofstream post_stream("polygon.ps");
@@ -161,6 +162,27 @@ TEST_CASE("Basic Shape creation", "[Basic Shapes]"){
         contents = readFile("polygonTemplate.ps");
         REQUIRE(contents == stream.str());
         REQUIRE(poly->checkPostScript("polygon.ps") == "%!");
+        
+    }
+    
+    SECTION("compound shape"){
+        ofstream post_stream("compound.ps");
+        ostringstream stream;
+        
+        intro(stream);
+        vector<string> shapes;
+        
+        //shapes.push_back("circle");
+        //shapes.push_back("rectangle");
+        shapes.push_back("triangle");
+        shapes.push_back("square");
+        
+        std::unique_ptr<CompoundShape> shape;
+        shape->stackHorizontal(shapes, stream);
+        stream << "showpage" << endl;
+        
+        post_stream << stream.str();
+        post_stream.close();
         
     }
 }

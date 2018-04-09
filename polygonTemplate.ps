@@ -1,0 +1,37 @@
+%!
+/defpoly {
+4 dict begin /p exch def /n exch def
+/m matrix currentmatrix def
+ dup scale
+/s matrix currentmatrix def
+0 360 n div 359.9
+({
+{
+//s setmatrix
+rotate
+//p exec
+} for
+//m setmatrix
+}) token pop exch pop
+bind
+end exec
+} bind def
+
+/drawpoly {
+gsave
+translate
+1 index 0 moveto
+{
+1 0 lineto
+} defpoly
+gsave
+0.7 0.5 0.7 setrgbcolor fill
+grestore
+closepath stroke
+grestore
+360 360 moveto
+} def
+gsave
+216 216 translate
+100 8 120.711 120.711 drawpoly
+grestore

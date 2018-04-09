@@ -39,21 +39,27 @@ ostringstream & CompoundShape::scale(double width, double height, ostringstream 
 
 }
 
-void stackHorizontal(vector<string> & name, ostringstream & stream){
+ostringstream & CompoundShape::stackHorizontal(vector<string> name, ostringstream & stream){
     
     for (int i = 0; i < name.size(); ++i) {
         if (name[i] == "triangle"){
-                Triangle m(1, "triangle");
+                Triangle m(72, "triangle");
                 m.toPostScript(stream);
+            stream << "gsave" << endl;
+            stream << m.getWidth() << " " << m.getHeight() << " translate" << endl;
             stream << "triangle stroke" << endl;
-            stream << "1 width 0 height translate" << endl;
+            stream << "grestore" << endl;
+            
             
         }
         else if(name[i] == "square") {
-                Square n(1, "square");
+                Square n(72, "square");
                 n.toPostScript(stream);
+            stream << "gsave" << endl;
+            stream << n.getWidth() << " " << n.getHeight() << " translate" << endl;
             stream << "square stroke" << endl;
-            stream << "1 width 0 height translate" << endl;
+            stream << "grestore" << endl;
+
             
         }
         else if(name[i] == "circle") {
@@ -76,14 +82,10 @@ void stackHorizontal(vector<string> & name, ostringstream & stream){
             
         }
     }
-    
-    
-    
-    
-    
+    return stream;
 }
 
-void stackVertical(vector<string> name, ostringstream & stream){
+ostringstream & CompoundShape::stackVertical(vector<string> name, ostringstream & stream){
     for (int i = 0; i < name.size(); ++i) {
         if (name[i] == "triangle"){
             Triangle m(1, "triangle");
@@ -119,5 +121,6 @@ void stackVertical(vector<string> name, ostringstream & stream){
             
         }
     }
+    return stream;
 }
 

@@ -1,0 +1,48 @@
+%!
+%% C2P
+/inch {72 mul} def
+0 inch 0 inch moveto
+0 inch 1 inch rmoveto
+
+%%Triangle
+/triangle{
+/width {72 mul} def
+/height {72 mul} def
+gsave
+1 width 2 div 1 height rlineto
+1 width 2 div -1 height rlineto
+closepath
+gsave
+0 0.5 1 setrgbcolor
+fill
+grestore
+stroke
+grestore
+}def
+
+gsave
+72 72 translate
+triangle stroke
+grestore
+%%Square
+/square{
+/width {72 mul} def
+/height {72 mul} def
+gsave
+1 width 0 height rlineto
+0 width 1 height rlineto
+-1 width 0 height rlineto
+closepath
+gsave
+1 0 0.5 setrgbcolor
+fill
+grestore
+stroke
+grestore
+}def
+
+gsave
+72 72 translate
+square stroke
+grestore
+showpage

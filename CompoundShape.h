@@ -10,8 +10,8 @@ class CompoundShape : public Shape {
 public:
     std::ostringstream & rotate(int degree, std::ostringstream & stream, std::string name);
     std::ostringstream & scale(double width, double height, std::ostringstream & stream, std::string name);
-    void stackHorizontal(std::vector<std::unique_ptr<Shape>> & cShape, std::ostringstream & stream);
-    void stackVertical(std::vector<std::unique_ptr<Shape>> & cShape, std::ostringstream & stream);
+    std::ostringstream & stackHorizontal(std::vector<std::string> name, std::ostringstream & stream);
+    std::ostringstream & stackVertical(std::vector<std::string> name, std::ostringstream & stream);
 
 };
 #endif /* ComplexShape_h */
