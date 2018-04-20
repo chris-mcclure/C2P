@@ -24,6 +24,14 @@ double Rectangle::getHeight(){
     return _height;
 }
 
+void Rectangle::setWidth(double w) {
+    _width = w;
+}
+
+void Rectangle::setHeight(double h) {
+    _height = h;
+}
+
 void Rectangle::setPostScript(ostringstream & stream){
     _stream = std::move(stream);
 }

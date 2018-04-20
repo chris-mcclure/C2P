@@ -11,8 +11,9 @@
 
 #include <stdio.h>
 #include "CompoundShape.h"
+#include "Shape.h"
 
-class BasicShape : public CompoundShape{
+class BasicShape : public Shape {
 public:
     virtual ~BasicShape() = default;
 };

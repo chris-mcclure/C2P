@@ -1,6 +1,7 @@
 
 #ifndef CompoundShape_h
 #define CompoundShape_h
+
 #include "Shape.h"
 #include <vector>
 #include <fstream>
@@ -11,7 +12,7 @@ public:
     std::ostringstream & scale(double width, double height, std::ostringstream & stream, std::string name);
     void stackHorizontal(std::vector<std::unique_ptr<Shape>> & cShape, std::ostringstream & stream);
     void stackVertical(std::vector<std::unique_ptr<Shape>> & cShape, std::ostringstream & stream);
-    
+
 };
 #endif /* ComplexShape_h */
 

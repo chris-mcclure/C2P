@@ -13,6 +13,7 @@
 #include "Polygon.h"
 #include "Spacer.h"
 #include "CustomShape.hpp"
+#include "BasicShape.h"
 #include "catch.hpp"
 #include <memory>
 using std::ostream;
@@ -163,5 +164,3 @@ TEST_CASE("Basic Shape creation", "[Basic Shapes]"){
         
     }
 }
-
-

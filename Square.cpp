@@ -28,6 +28,14 @@ string Square::getName(){
     return _name;
 }
 
+void Square::setWidth(double w) {
+    _width = w;
+}
+
+void Square::setHeight(double h) {
+    _height = h;
+}
+
 void Square::setPostScript(ostringstream & stream){
     _stream = std::move(stream);
 }

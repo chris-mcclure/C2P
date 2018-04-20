@@ -28,6 +28,14 @@ string Spacer::getName(){
     return _name;
 }
 
+void Spacer::setWidth(double w) {
+    _width = w;
+}
+
+void Spacer::setHeight(double h) {
+    _height = h;
+}
+
 void Spacer::setPostScript(ostringstream & stream){
     _stream = std::move(stream);
 }
