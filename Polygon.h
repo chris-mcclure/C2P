@@ -8,24 +8,26 @@
 #define Polygon_h
 #include <cmath>
 #include <math.h>
-#include "BasicShape.h"
+#include "Shape.h"
+using std::ostringstream;
 
 
-class Polygon : public BasicShape{
+class Polygon : public Shape{
 public:
     Polygon(int numSides, double sideLength, const std::string & name);
-    std::ostringstream & toPostScript(std::ostringstream & stream);
+    std::ostringstream & toPostScript(std::ostringstream & stream)override;
     double getNumSides() const;
     double getSideLength() const;
-    double getHeight();
-    double getWidth();
-    void setWidth(double w);
-    void setHeight(double h);
+    double getHeight()override;
+    double getWidth()override;
+    void setWidth(double w)override;
+    void setHeight(double h)override;
     void setPostScript(std::ostringstream & stream);
-    std::string getName();
-    std::ostringstream & getPostScript();
+    std::string getName()override;
+    std::ostringstream & getPostScript()override;
     
     
+
 private:
     int _numSides;
     double _width;

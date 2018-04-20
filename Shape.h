@@ -12,6 +12,10 @@
 #include <fstream>
 #include <iostream>
 #include <sstream>
+#include <vector>
+#include <string>
+using std::string;
+
 
 class Shape{
 public:
@@ -25,6 +29,12 @@ public:
     virtual std::string getName() = 0;
     virtual void setWidth(double w) = 0;
     virtual void setHeight(double h) = 0;
+    
+    std::ostringstream & rotate(int degree, std::ostringstream & stream, std::string name);
+    std::ostringstream & scale(double width, double height, std::ostringstream & stream, std::string name);
+    std::ostringstream & stackHorizontal(std::vector<string> & name, std::ostringstream & stream);
+    std::ostringstream & stackVertical(std::vector<string> & name, std::ostringstream & stream);
+
     
 private:
     double bounding_box;

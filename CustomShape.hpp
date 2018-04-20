@@ -13,25 +13,26 @@
 
 class Custom : public BasicShape{
 public:
-    Custom(double xpos, double ypos, double radius, std::string name);
+    Custom(double degree, const std::string & name, double width);
     std::ostringstream & toPostScript(std::ostringstream & stream);
+    double getNumSides() const;
+    double getSideLength() const;
     double getHeight();
     double getWidth();
-    double getX() const;
-    double getY() const;
+    void setWidth(double w);
+    void setHeight(double h);
     double getRadius();
     std::string getName();
     std::ostringstream & getPostScript();
-    std::ostringstream & rotate(int degree, std::ostringstream & stream, std::string name);
     
 private:
+    int _numSides;
     double _width;
     double _height;
     std::string _name;
     double _radius;
+    double _sideLength;
     std::ostringstream _stream;
-    double _xpos;
-    double _ypos;
 };
 
 #endif /*Customshape_h */
