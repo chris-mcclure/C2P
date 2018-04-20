@@ -42,7 +42,7 @@ string readFile(string fileName){
     while(!file.eof())
         s1 += file.get();
     return s1;
-}
+} 
 
 /* Checks to see if the file actually gets created and opened. */
 
@@ -51,7 +51,7 @@ TEST_CASE("Basic Shape creation", "[Basic Shapes]"){
         ofstream post_stream("C2P.ps");
         ostringstream stream;
         intro(stream);
-        std::unique_ptr<BasicShape> shape;
+        std::unique_ptr<CompoundShape> shape;
         
         REQUIRE(post_stream.is_open() == true);
         //Circle
@@ -148,7 +148,7 @@ TEST_CASE("Basic Shape creation", "[Basic Shapes]"){
         string contents;
         
         REQUIRE(post_stream.is_open() == true);
-        std::unique_ptr<Polygon> poly = std::make_unique<Polygon>(8, 50, "polygon");
+        std::unique_ptr<Polygon> poly = std::make_unique<Polygon>(7, 50, "polygon");
         REQUIRE(poly->getNumSides() == 8);
         REQUIRE(poly->getSideLength() == 50);
         REQUIRE(poly->getName() == "polygon");

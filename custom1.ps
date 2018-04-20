@@ -1,53 +1,49 @@
-%!
-%%Custom Shape
-/watermelon {
-/radius {100 mul} def
-/xpos {432 mul} def
-/ypos {432 mul} def
-gsave
-1 xpos 1 ypos 1 radius 10 add 180 0 arc closepath
+%green part
+/watermelon{
+200 200 120 180 0 arc closepath
 gsave
 0 1 0.5 setrgbcolor fill
-grestore
+gsave
 stroke
 grestore
+%melon
 gsave
-1 xpos 1 ypos 1 radius 180 0 arc closepath
+200 200 110 180 0 arc closepath
 gsave
 1 0 0.3 setrgbcolor fill
 grestore
 stroke
 grestore
 gsave
-1 xpos 40 add 1 ypos 20 add 1 radius 60 sub 0 360 arc closepath
+240 220 40 0 360 arc closepath
+gsave
+ 0.95 setgray fill
+grestore
+stroke
+grestore
+gsave
+160 220 40 0 360 arc closepath
 gsave
 0.95 setgray fill
 grestore
 stroke
 grestore
 gsave
-1 xpos 40 sub 1 ypos 20 add 1 radius 60 sub 0 360 arc closepath
-gsave
-0.95 setgray fill
-grestore
-stroke
-grestore
-gsave
-1 xpos 40 add 1 ypos 20 add 1 radius 90 sub 0 360 arc closepath
+240 220 10 0 360 arc closepath
 gsave
 0 setgray fill
 grestore
 stroke
 grestore
 gsave
-1 xpos 40 sub 1 ypos 20 add 1 radius 90 sub 0 360 arc closepath
+160 220 10 0 360 arc closepath
 gsave
 0 setgray fill
 grestore
 stroke
 grestore
 gsave
-1 xpos 1 ypos 25 sub 1 radius 50 sub 180 0 arc closepath
+200 175 50 180 0 arc closepath
 gsave
 1 setgray fill
 grestore

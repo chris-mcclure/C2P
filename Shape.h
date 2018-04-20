@@ -15,6 +15,7 @@
 
 class Shape{
 public:
+    ~Shape() = default;
     bool file_open(const std::string & s);
     std::string checkPostScript(const std::string & s);
     virtual std::ostringstream & toPostScript(std::ostringstream & stream) = 0;
@@ -23,8 +24,7 @@ public:
     virtual std::ostringstream & getPostScript() = 0;
     void getShape(Shape & s);
     virtual std::string getName() = 0;
-    virtual void setWidth(double w) = 0;
-    virtual void setHeight(double h) = 0;
+ 
     
 private:
     double bounding_box;

@@ -11,7 +11,7 @@
 #include "BasicShape.h"
 #include <string>
 
-class Custom : public BasicShape{
+class Custom : public CompoundShape{
 public:
     Custom(double xpos, double ypos, double radius, std::string name);
     std::ostringstream & toPostScript(std::ostringstream & stream);

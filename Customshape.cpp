@@ -19,6 +19,14 @@ using std::string;
 Custom::Custom(double xpos, double ypos, double radius, std::string name) :_xpos(xpos), _ypos(ypos), _radius(radius), _name(name)
 {}
 
+std::ostringstream & Custom::rotate(int degree, std::ostringstream & stream, std::string name){
+    stream << "gsave" << endl;
+    stream << "0 0 " << degree << " rotate" << endl;
+    stream << name << " stroke" << endl;
+    stream << "grestore" << endl;
+    return stream;
+}
+
 double Custom::getX()const{
     return _xpos;
 }
@@ -51,10 +59,10 @@ ostringstream & Custom::getPostScript(){
 ostringstream & Custom::toPostScript(ostringstream & stream){
     stream << "%green part" << endl;
     stream << "/watermelon{" << endl;
-    stream << "200 200 110 180 0 arc closepath" << endl;
+    stream << "200 200 120 180 0 arc closepath" << endl;
     stream << "gsave" << endl;
     stream << "0 1 0.5 setrgbcolor fill" << endl;
-    stream << "grestore" << endl;
+    stream << "gsave" << endl;
     stream << "stroke" << endl;
     stream << "grestore" << endl;
 

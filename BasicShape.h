@@ -13,8 +13,7 @@
 #include "CompoundShape.h"
 #include "Shape.h"
 
-class BasicShape : public Shape {
+class BasicShape : public CompoundShape {
 public:
-    virtual ~BasicShape() = default;
 };
 #endif /* BasicShape_h */
